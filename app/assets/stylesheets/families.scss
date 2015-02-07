@@ -1,0 +1,39 @@
+// Place all the styles related to the families controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+a.family-icon {
+  height: 13vw;
+  width: 13vw;
+  text-decoration: none;
+}
+
+.family-icon-meta {
+  padding: 0px;
+  margin: 0px;
+  text-align: right;
+  line-height: 1.25em;
+}
+
+.family-icon-meta span.family-type {
+  font-size: 0.65em;
+  font-style: italic;
+}
+
+.family-icon-meta span.family-count {
+  font-size: 1.75em;
+  font-style: italic;
+}
+
+.family-icon-acronym {
+  font-size: 5vw;
+  text-align: center;
+  line-height: 1.25em;
+}
+
+.family-icon-name {
+  font-size: 0.65em;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.25em;
+}

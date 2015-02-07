@@ -1,0 +1,31 @@
+<%- view_title "Families" %>
+
+<% content_for :main do %>
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h1 class="page-header">Families</h1>
+    <p class="lead">Families are groupings of NIST SP 800-53 security controls.</p>
+    <p>In NISTS's words:</p>
+    <blockquote>
+      <p>Security controls described in this publication have a well-defined organization and structure. For ease of use in the security control selection and specification process, controls are organized into eighteen families. Each family contains security controls related to the general security topic of the family. A two-character identifier uniquely identifies security control families, for example, PS (Personnel Security). Security controls may involve aspects of policy, oversight, supervision, manual processes, actions by individuals, or automated mechanisms implemented by information systems/devices.</p>
+    </blockquote>
+    <p>Each of the <%= @family_count %> families comes with a two letter code, which comprises the first part of a control number (i.e., the principal identifiers for controls). Here's a quick guide<span class="hidden-xs hidden-sm">, and some "at-a-glance" stats</span>:</p>
+    <div class="row">
+      <% @families.each do |family| %>
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <a href="#" class="thumbnail family-icon">
+          <div class="hidden-xs hidden-sm family-icon-meta">
+            <span class="label label-info family-type"><%= family[:family_type] %></span>
+            <span class="family-count">42</span>
+          </div>
+          <div class="family-icon-acronym">
+            <abbr title="<%= family[:name] %>"><%= family[:acronym] %></abbr>
+          </div>
+          <div class="hidden-xs hidden-sm family-icon-name"><%= family[:name] %></div>
+        </a>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>
