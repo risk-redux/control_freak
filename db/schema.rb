@@ -11,6 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150207222601) do
+
+  create_table "families", force: :cascade do |t|
+    t.text     "name",        limit: 65535
+    t.text     "acronym",     limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.text     "family_type", limit: 65535
+  end
 
 end
