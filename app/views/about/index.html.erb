@@ -1,0 +1,24 @@
+<%- view_title "About" %>
+
+<% content_for :main do %>
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="page-header">About <%= "#{Rails.application.config.app_name}" %></h1>
+    <p class="lead">Here's the straight putamus about this app!</p>
+    <h2>Tincidun ut</h2>
+    <%= render "shared/lorem" %>
+  </div>
+  <div class="col-md-3">
+    <h2>Amet</h2><%= render "shared/short_lorem" %>
+  </div>
+  <div class="col-md-3">
+    <h2>Elit</h2><%= render "shared/short_lorem" %>
+  </div>
+  <div class="col-md-3">
+    <h2>Euismod</h2><%= render "shared/short_lorem" %>
+  </div>
+  <div class="col-md-3">
+    <h2>Nonummy</h2><%= render "shared/short_lorem" %>
+  </div>
+</div>
+<% end %>

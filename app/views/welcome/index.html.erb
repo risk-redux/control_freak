@@ -1,0 +1,39 @@
+<%- view_title "Welcome!" %>
+
+<% content_for :jumbotron do %>
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="page-header">Welcome to <%= "#{Rails.application.config.app_name}" %>!</h1>
+  </div>
+  <div class="col-md-8">
+    <p class="lead">Hi! Hello. How are you?</p>
+    <p>This system [does some stuff].</p>
+    <%= render "shared/short_lorem" %>
+  </div>
+  <div class="col-md-4">
+    <button type="button" class="btn btn-primary btn-lg btn-block">
+      <br/>
+      Start <%= "#{Rails.application.config.app_name}" %>-ing!
+      <br/>
+      <br/>
+    </button>
+  </div>
+</div>
+<% end %>
+
+<% content_for :main do %>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Dignissim qui</h2>
+    <%= render "shared/lorem" %>    
+  </div>
+  <div class="col-md-6">
+    <h2>Dolor sit</h2>
+    <%= render "shared/lorem" %>
+  </div>
+  <div class="col-md-6">
+    <h2>Consectetuer adipiscing</h2>
+    <%= render "shared/lorem" %>
+  </div>
+</div>
+<% end %>

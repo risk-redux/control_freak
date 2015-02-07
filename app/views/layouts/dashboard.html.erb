@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <%= render partial: "shared/head" %>
+  <body>
+
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+      <%= render partial: "shared/nav" %>
+
+      <!-- Begin page content -->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2 col-md-2 sidebar">
+            <%= yield(:sidebar) %>
+          </div>
+          <div class="col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 main">
+            <%= yield(:main) %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Close up the page wrapping. -->    
+
+  </body>
+</html>

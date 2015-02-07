@@ -1,0 +1,35 @@
+h1.anchor, h2.anchor, h3.anchor, h4.anchor {
+  padding-top: 80px;
+  margin-top: -80px;
+}
+
+p{
+  text-align: justify;
+}
+
+.navbar-brand{
+  font-family: "Lobster";
+  font-size: 1.50em;
+  font-weight: 400;
+  font-style: normal;
+  font-variant: normal;
+}
+
+.fancy{
+  font-family: "Lobster";
+}
+
+.giant{
+        font-size: 3.00em;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 900;
+}
+
+.popover div.small {
+  word-break: break-all;
+}
+
+.popover > .arrow {
+  visibility: hidden;
+}
