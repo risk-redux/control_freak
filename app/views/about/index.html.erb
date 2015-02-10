@@ -2,24 +2,25 @@
 
 <% content_for :main do %>
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <h1 class="page-header">About <%= "#{Rails.application.config.app_name}" %></h1>
     <p class="lead">A bit about what I'm doing here.</p>
     <p class="lead">This app is populated with information from <a href="http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf">NIST SP 800-53 Revision 4, <em>Security and Privacy Controls for Federal Information Systems and Organizations</em></a>.</p>
-    <p>However, the plan is to keep it updated with the latest information once I automate the process.</p>
-    <p>I like the idea of control_freak, but if you would rather get right at the raw data it sits over top of, you can check out my <a href="https://github.com/egyptiankarim/NIST-SP-800-53-Toolkit">NIST-SP-800-53-Toolkit</a> repo, or just go directly to <a href="http://csrc.nist.gov/publications/PubsSPs.html" title="NIST Computer Security Publications - NIST Special Publications (SPs)">NIST</a> and play with the stuff they have.</p>
+    <p>However, the plan is to keep it updated with the latest information once I automate the process. According to NIST, "NIST Special Publication 800-53, Revision 4, represents the most comprehensive update to the security controls catalog since its inception in 2005". For real. It's in the foreward. But since Revision 5 is just around the corner, developing an effective way to keep this system up-to-date is a top priority.</p>
+    </blockquote>
+    <p>I like the idea of control_freak, but if you would rather get right at the raw data it sits over top of, you can check out my <a href="https://github.com/egyptiankarim/NIST-SP-800-53-Toolkit">NIST-SP-800-53-Toolkit</a> repo, or just go directly to <a href="http://csrc.nist.gov/publications/PubsSPs.html" title="NIST Computer Security Publications - NIST Special Publications (SPs)">NIST</a> and play with the stuff they have. As for control_freak itself, it's broken into three major areas:</p>
   </div>
-  <div class="col-md-3">
-    <h2>Amet</h2><%= render "shared/short_lorem" %>
+  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <h2>Families</h2><%= render "shared/short_lorem" %>
   </div>
-  <div class="col-md-3">
-    <h2>Elit</h2><%= render "shared/short_lorem" %>
+  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <h2>Controls</h2><%= render "shared/short_lorem" %>
   </div>
-  <div class="col-md-3">
-    <h2>Euismod</h2><%= render "shared/short_lorem" %>
+  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <h2>Criteria</h2><%= render "shared/short_lorem" %>
   </div>
-  <div class="col-md-3">
-    <h2>Nonummy</h2><%= render "shared/short_lorem" %>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <p>You can think of each of the areas as a level of abstraction&hellip; Because that's what they are. And you can navigate and browse through each one to get to the juicy bits that you want.</p>
   </div>
 </div>
 <% end %>
