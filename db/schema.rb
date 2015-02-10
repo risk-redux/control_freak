@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207222601) do
+ActiveRecord::Schema.define(version: 20150207231055) do
+
+  create_table "controls", force: :cascade do |t|
+    t.text     "family",                      limit: 65535
+    t.text     "number",                      limit: 65535
+    t.text     "title",                       limit: 65535
+    t.text     "priority",                    limit: 65535
+    t.boolean  "is_baseline_impact_low",      limit: 1
+    t.boolean  "is_baseline_impact_moderate", limit: 1
+    t.boolean  "is_baseline_impact_high",     limit: 1
+    t.boolean  "is_withdrawn",                limit: 1
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.boolean  "is_enhancement",              limit: 1
+  end
 
   create_table "families", force: :cascade do |t|
     t.text     "name",        limit: 65535
