@@ -10,17 +10,33 @@
     <table class="table table-condensed table-striped">
       <thead>
         <tr>
-          <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">SSP</th>
-          <th class="col-xs-7 col-sm-7 col-md-7 col-lg-7">System name</th>
-          <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Updated</th>
+          <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Number</th>
+          <th class="col-xs-7 col-sm-7 col-md-7 col-lg-7">Title</th>
+          <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Low</th>
+          <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Moderate</th>
+          <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">High</th>
         </tr>
       </thead>
       <tbody>
-        <% @systems.each do |system_record| %>
+        <% @controls.each do |control| %>
         <tr>
-          <td><%= link_to(system_record.ssp, system_path(system_record.ssp)) %></td>
-          <td><%= system_record.system_name %></td>
-          <td><%= system_record.updated_at.strftime("%F") %></td>
+          <td><%= control[:number] %></td>
+          <td><%= control[:title] %></td>
+          <td>
+            <% if control.is_baseline_impact_low %>
+            <span class="glyphicon glyphicon-ok"></span>
+            <% end %>
+          </td>
+          <td>
+            <% if control.is_baseline_impact_moderate %>
+            <span class="glyphicon glyphicon-ok"></span>
+            <% end %>
+          </td>
+          <td>
+            <% if control.is_baseline_impact_high %>
+            <span class="glyphicon glyphicon-ok"></span>
+            <% end %>
+          </td>
         </tr>
         <% end %>
       </tbody>
@@ -28,6 +44,5 @@
       </tfoot>
     </table>
   </div>
-
 </div>
 <% end %>
