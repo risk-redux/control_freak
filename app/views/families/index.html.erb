@@ -13,16 +13,15 @@
     <div class="row">
       <% @families.each do |family| %>
       <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-        <a href="#" class="thumbnail family-icon">
+        <%= link_to(family_path(family.id), {class: "thumbnail family-icon"} ) do %>
           <div class="hidden-xs hidden-sm family-icon-meta">
-            <span class="label label-info family-type"><%= family[:family_type] %></span>
             <span class="family-count">42</span>
           </div>
           <div class="family-icon-acronym">
             <abbr title="<%= family[:name] %>"><%= family[:acronym] %></abbr>
           </div>
           <div class="hidden-xs hidden-sm family-icon-name"><%= family[:name] %></div>
-        </a>
+        <% end %>
       </div>
       <% end %>
     </div>
