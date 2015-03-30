@@ -3,12 +3,11 @@ class FamiliesController < ApplicationController
     @families = Family.all
     @family_count = @families.size
 
-    @control_count = Control.group(:family).count
-    puts @control_count, "\n\n\n\n\n\n\n\n\n"
+    @control_count = Control.where(is_enhancement: 0).group(:family).count
   end
 
   def show
-    @family = Family.find(params[:id])
-    @controls = Controls.where(family: @family.name)
+    @family = Family.where(acronym: params[:acronym]).first
+    @controls = Control.where(family: @family.name, is_enhancement: 0)
   end
 end
