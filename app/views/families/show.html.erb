@@ -7,11 +7,12 @@
     <p class="lead"></p>
   </div>
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive">
+    <h2>Controls</h2>
     <table class="table table-condensed table-striped">
       <thead>
         <tr>
           <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Number</th>
-          <th class="col-xs-7 col-sm-7 col-md-7 col-lg-7">Title</th>
+          <th class="col-xs-8 col-sm-8 col-md-8 col-lg-8">Title</th>
           <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Low</th>
           <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Moderate</th>
           <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">High</th>
@@ -19,25 +20,7 @@
       </thead>
       <tbody>
         <% @controls.each do |control| %>
-        <tr>
-          <td><%= control[:number] %></td>
-          <td><%= control[:title] %></td>
-          <td>
-            <% if control.is_baseline_impact_low %>
-            <span class="glyphicon glyphicon-ok"></span>
-            <% end %>
-          </td>
-          <td>
-            <% if control.is_baseline_impact_moderate %>
-            <span class="glyphicon glyphicon-ok"></span>
-            <% end %>
-          </td>
-          <td>
-            <% if control.is_baseline_impact_high %>
-            <span class="glyphicon glyphicon-ok"></span>
-            <% end %>
-          </td>
-        </tr>
+        <%= control_row(control) %>
         <% end %>
       </tbody>
       <tfoot>

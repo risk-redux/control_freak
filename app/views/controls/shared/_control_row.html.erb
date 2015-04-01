@@ -1,0 +1,23 @@
+<tr class="<%= @row_class %>">
+  <td><%= control[:number] %></td>
+  <td><%= control[:title] %></td>
+  <% if @row_type == "Normal" %>
+  <td class="text-center">
+    <% if control.is_baseline_impact_low %>
+    <span class="glyphicon glyphicon-ok"></span>
+    <% end %>
+  </td>
+  <td class="text-center">
+    <% if control.is_baseline_impact_moderate %>
+    <span class="glyphicon glyphicon-ok"></span>
+    <% end %>
+  </td>
+  <td class="text-center">
+    <% if control.is_baseline_impact_high %>
+    <span class="glyphicon glyphicon-ok"></span>
+    <% end %>
+  </td>
+  <% else %>
+  <td colspan="3" class="text-center"><%= @row_type %></td>
+  <% end %>
+</tr>

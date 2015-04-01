@@ -6,5 +6,27 @@
     <h1 class="page-header">Controls</h1>
     <p class="lead">Controls are policy- and technology-agnostic mechanisms for safeguarding information systems against compromises of the confidentiality, integrity, and/or availability of those systems.</p>
   </div>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive">
+    <h2>Controls</h2>
+    <table class="table table-condensed table-striped">
+      <thead>
+        <tr>
+          <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Number</th>
+          <th class="col-xs-8 col-sm-8 col-md-8 col-lg-8">Title</th>
+          <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Low</th>
+          <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Moderate</th>
+          <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">High</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @controls.each do |control| %>
+        <%= control_row(control) %>
+        <% end %>
+      </tbody>
+      <tfoot>
+      </tfoot>
+    </table>
+  </div>
+
 </div>
 <% end %>
