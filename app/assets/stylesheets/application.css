@@ -20,3 +20,8 @@
  *= require_tree .
  *= require_self
  */
+
+.ignore {
+  font-style: italic;
+  color: #bbbbbb;
+}

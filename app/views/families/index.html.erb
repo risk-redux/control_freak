@@ -10,21 +10,22 @@
       <p>Security controls described in this publication have a well-defined organization and structure. For ease of use in the security control selection and specification process, controls are organized into eighteen families. Each family contains security controls related to the general security topic of the family. A two-character identifier uniquely identifies security control families, for example, PS (Personnel Security). Security controls may involve aspects of policy, oversight, supervision, manual processes, actions by individuals, or automated mechanisms implemented by information systems/devices.</p>
     </blockquote>
     <p>Each of the <%= @family_count %> families comes with a two letter code, which comprises the first part of a control number (i.e., the principal identifiers for controls). Here's a quick guide<span class="hidden-xs hidden-sm">, and some "at-a-glance" stats</span>:</p>
-    <div class="row">
-      <% @families.each do |family| %>
-      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-        <%= link_to(family_path(family.acronym), {class: "thumbnail family-icon"} ) do %>
-          <div class="hidden-xs hidden-sm family-icon-meta">
-            <span class="family-count"><%= @control_count[family[:name]] %></span>
-          </div>
-          <div class="family-icon-acronym">
-            <abbr title="<%= family[:name] %>"><%= family[:acronym] %></abbr>
-          </div>
-          <div class="hidden-xs hidden-sm family-icon-name"><%= family[:name] %></div>
-        <% end %>
-      </div>
+  </div>
+
+  <div class="row">
+    <% @families.each do |family| %>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+      <%= link_to(family_path(family.acronym), {class: "thumbnail family-icon"} ) do %>
+        <div class="hidden-xs hidden-sm family-icon-meta">
+          <span class="family-count"><%= @control_count[family[:name]] %></span>
+        </div>
+        <div class="family-icon-acronym">
+          <abbr title="<%= family[:name] %>"><%= family[:acronym] %></abbr>
+        </div>
+        <div class="hidden-xs hidden-sm family-icon-name"><%= family[:name] %></div>
       <% end %>
     </div>
+    <% end %>
   </div>
 </div>
 <% end %>
