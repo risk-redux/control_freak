@@ -1,5 +1,9 @@
 <tr class="<%= @row_class %>">
-  <td><%= control[:number] %></td>
+  <td>
+    <%= link_to(control_path(control.number)) do %>
+    <%= control[:number] %>
+    <% end %>
+  </td>
   <td><%= control[:title] %></td>
   <% if @row_type == "Normal" %>
   <td class="text-center">
