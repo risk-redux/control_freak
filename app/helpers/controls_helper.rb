@@ -5,8 +5,15 @@ module ControlsHelper
     @parsed_number = @number[/([A-Z]{2}-[0-9]{1,2})(([a-z]\.|[0-9]\.)*|$)/, 3] # Ugh.
     @level = @number.scan(".").length # Double ugh.
     @description = statement.description
+    @parsed_description = @is_odv ? parsed_description(@description) : @description
 
     render("controls/shared/control_statement", number: @parsed_number, level: @level, description: @description)
+  end
+
+  def parsed_description(description)
+    @parsed_description = description.insert(description.index('['), "<mark>")
+    @parsed_description = @parsed_description.insert(description.index(']')+1, "</mark>")
+    @parsed_description
   end
 
   def baseline_panel(control, level)

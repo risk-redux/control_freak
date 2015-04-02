@@ -20,15 +20,16 @@ Rails.application.routes.draw do
 
   get 'statements', to: 'statements#index', as: :statements
 
+  #get 'references', to: 'references#index', as: :references
+  #get 'supplements', to: 'supplements#index', as: :supplements
+  #get 'withdrawls', to: 'withdrawl#index', as: :withdrawls
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :references
-  resources :supplements
-  resources :withdrawls
-
+  
   # Example resource route with options:
   #   resources :products do
   #     member do
