@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402192458) do
+ActiveRecord::Schema.define(version: 20150402204345) do
 
   create_table "controls", force: :cascade do |t|
     t.text     "family",                      limit: 65535
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20150402192458) do
   create_table "supplements", force: :cascade do |t|
     t.string   "number",      limit: 255
     t.text     "description", limit: 65535
-    t.string   "related",     limit: 255
+    t.text     "related",     limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
