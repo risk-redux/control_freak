@@ -1,8 +1,4 @@
 <p class=<%= "statement_level_#{@level}" %>>
   <span><%= @parsed_number %></span>
-  <% if @is_odv %>
-  <span><mark><%= @description %></mark></span>
-  <% else %>
-  <span><%= @description %></span>
-  <% end %>
+  <span><%= @parsed_description.html_safe %></span>
 </p>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401191727) do
+ActiveRecord::Schema.define(version: 20150402192458) do
 
   create_table "controls", force: :cascade do |t|
     t.text     "family",                      limit: 65535
@@ -35,12 +35,35 @@ ActiveRecord::Schema.define(version: 20150401191727) do
     t.text     "family_type", limit: 65535
   end
 
+  create_table "references", force: :cascade do |t|
+    t.string   "number",     limit: 255
+    t.text     "reference",  limit: 65535
+    t.string   "link",       limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   create_table "statements", force: :cascade do |t|
     t.string   "number",      limit: 255
     t.text     "description", limit: 65535
     t.boolean  "is_odv",      limit: 1
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "supplements", force: :cascade do |t|
+    t.string   "number",      limit: 255
+    t.text     "description", limit: 65535
+    t.string   "related",     limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "withdrawls", force: :cascade do |t|
+    t.string   "number",            limit: 255
+    t.string   "incorporated_into", limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
 end
