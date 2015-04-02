@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get 'families', to: 'families#index', as: :families
   get 'families/:acronym', to: 'families#show', as: :family
 
+  get 'controls', to: 'controls#index', as: :controls
+  get 'controls/:number', to: 'controls#show', as: :control
+
   get 'statements', to: 'statements#index', as: :statements
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
@@ -22,7 +25,6 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :controls
   resources :references
   resources :supplements
   resources :withdrawls
