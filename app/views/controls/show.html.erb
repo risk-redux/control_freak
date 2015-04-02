@@ -3,8 +3,34 @@
 <% content_for :main do %>
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <h1 class="page-header"><%= @control.number %> <small><%= @control.title %></small></h1>
+    <h1 class="page-header">
+      <%= @control.number %>
+      <small>
+        <%= @control.title %>
+        <% if @control.priority.to_s != '' %>
+        <span class="label label-info"><%= @control.priority %></span>
+        <% end %>
+      </small>
+    </h1>
     <p class="lead"></p>
+    <h2>Description</h2>
+    <% @statements.each do |statement| %>
+      <%= control_statement(statement) %>
+    <% end %>
+    <h2>Enhancements</h2>
+    <h2>Baseline</h2>
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <%= baseline_panel(@control, "Low") %>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <%= baseline_panel(@control, "Moderate") %>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <%= baseline_panel(@control, "High") %>
+      </div>
+    </div>
+    <h2>References</h2>
   </div>
 </div>
 <% end %>

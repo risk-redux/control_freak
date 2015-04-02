@@ -5,5 +5,8 @@ class ControlsController < ApplicationController
 
   def show
     @control = Control.where(number: params[:number]).first
+
+    # This is an ugly hack for MySQL and the way NIST numbers their statements.
+    @statements = Statement.where("number REGEXP ?", "#{params[:number]}([a-z]|$)")
   end
 end
