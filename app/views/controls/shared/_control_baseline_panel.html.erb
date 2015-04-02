@@ -1,19 +1,23 @@
-<% if @check %>
-<div class="panel panel-info">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-      <%= level %>
-      <span class="glyphicon glyphicon-ok pull-right" title="Selected"></span>
-    </h3>
+<% if check %>
+<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <%= level %>
+        <span class="glyphicon glyphicon-ok pull-right" title="Selected"></span>
+      </h3>
+    </div>
   </div>
 </div>
 <% else %>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-      <%= level %>
-      <span class="glyphicon glyphicon-minus pull-right" title="Not selected"></span>
-    </h3>
+<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <%= level %>
+        <span class="glyphicon glyphicon-minus pull-right" title="Not selected"></span>
+      </h3>
+    </div>
   </div>
 </div>
 <% end %>

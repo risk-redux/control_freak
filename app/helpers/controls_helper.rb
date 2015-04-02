@@ -16,21 +16,23 @@ module ControlsHelper
     @parsed_description
   end
 
-  def baseline_panel(control, level)
-    @check = check_baseline(control, level)
+  def baseline_panels(control)
+    @checks = {
+      "Low" => control.is_baseline_impact_low,
+      "Moderate" => control.is_baseline_impact_moderate,
+      "High" => control.is_baseline_impact_high
+    }
 
-    render("controls/shared/control_baseline_panel", level: level, check: @check)
+    render("controls/shared/control_baseline_panels", checks: @checks)
   end
 
-  def check_baseline(control, level)
-    case level
-    when "Low"
-      return @control.is_baseline_impact_low
-    when "Moderate"
-      return @control.is_baseline_impact_moderate
-    when "High"
-      return @control.is_baseline_impact_high
-    else
-    end
+  def baseline_labels(control)
+    @checks = {
+      "Low" => control.is_baseline_impact_low,
+      "Moderate" => control.is_baseline_impact_moderate,
+      "High" => control.is_baseline_impact_high
+    }
+
+    render("controls/shared/control_baseline_labels", checks: @checks)
   end
 end
