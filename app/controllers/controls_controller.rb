@@ -6,8 +6,9 @@ class ControlsController < ApplicationController
   def show
     @control = Control.where(number: params[:number]).first
 
-    # This is an ugly hack for MySQL and the way NIST numbers their statements.
+    # These are ugly hacks for MySQL and the way NIST numbers their statements.
     @statements = Statement.where("number REGEXP ?", "#{params[:number]}([a-z]|$)")
     @references = Reference.where(number: params[:number])
+    @enhancements = Control.where("is_enhancement = ? AND number REGEXP ?", true, "#{params[:number]} ")
   end
 end

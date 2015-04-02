@@ -17,20 +17,31 @@
     <% @statements.each do |statement| %>
       <%= control_statement(statement) %>
     <% end %>
+    <h3>Supplemental guidance</h3>
     <h2>Enhancements</h2>
+    <% @enhancements.each do |enhancement| %>
+    <h3><%= enhancement.number %>
+      <small>
+        <%= enhancement.title %>
+        <%= baseline_labels(enhancement) %>
+      </small>
+    </h3>
+    <% end %>
+    <h3>Supplemental guidance</h3>
     <h2>Baseline</h2>
     <div class="row">
-      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        <%= baseline_panel(@control, "Low") %>
-      </div>
-      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        <%= baseline_panel(@control, "Moderate") %>
-      </div>
-      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        <%= baseline_panel(@control, "High") %>
-      </div>
+      <%= baseline_panels(@control) %>
     </div>
     <h2>References</h2>
+    <ul>
+      <% @references.each do |reference| %>
+      <li>
+        <%= link_to(reference.link, { target: "_blank" }) do %>
+          <%= reference.reference %> <span class="glyphicon glyphicon-new-window"></span>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
   </div>
 </div>
 <% end %>
