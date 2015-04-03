@@ -9,6 +9,8 @@ class ControlsController < ApplicationController
     # These are ugly hacks for MySQL and the way NIST numbers their statements.
     @statements = Statement.where("number REGEXP ?", "#{params[:number]}([a-z]|$)")
     @references = Reference.where(number: params[:number])
+    @supplement = Supplement.where("number REGEXP ?", "#{params[:number]}$").first
+    @related_controls = @supplement.related.split(",")
     @enhancements = Control.where("is_enhancement = ? AND number REGEXP ?", true, "#{params[:number]} ")
   end
 end
