@@ -30,14 +30,16 @@
 
     <h2>Enhancements</h2>
     <% @enhancements.each do |enhancement| %>
-
     <h3><%= enhancement.number %>
       <small>
         <%= enhancement.title %>
         <%= baseline_labels(enhancement) %>
       </small>
     </h3>
-
+    <h4>Description</h4>
+    <% @enhancement_statements[enhancement.number].each do |enhancement_statement| %>
+      <%= enhancement_statement(enhancement_statement) %>
+    <% end %>
     <h4>Supplemental guidance</h4>
     <%= control_supplement(@enhancement_supplements[enhancement.number]) %>
 
