@@ -13,32 +13,38 @@
       </small>
     </h1>
     <p class="lead"></p>
+
     <h2>Description</h2>
     <% @statements.each do |statement| %>
       <%= control_statement(statement) %>
     <% end %>
-    <h3>Supplemental guidance</h3>
-    <p><%= @supplement.description %></p>
-    <h4>Related controls</h4>
-    <ul class="list-inline">
-      <% @related_controls.each do |related| %>
-      <li><%= link_to(related, control_path(related)) %></li>
-      <% end %>
-    </ul>
+
+    <h2>Supplemental guidance</h2>
+    <%= @supplement.description %>
+
+    <h3>Related controls</h3>
+    <%= related_controls(@supplement) %>
+
+    <h2>Baseline</h2>
+    <%= baseline_panels(@control) %>
+    
     <h2>Enhancements</h2>
     <% @enhancements.each do |enhancement| %>
+
     <h3><%= enhancement.number %>
       <small>
         <%= enhancement.title %>
         <%= baseline_labels(enhancement) %>
       </small>
     </h3>
+
+    <h4>Supplemental guidance</h4>
+    <%= control_supplement(@enhancement_supplements[enhancement.number]) %>
+
+    <h5>Related controls</h5>
+    <%= related_controls(@enhancement_supplements[enhancement.number]) %>
     <% end %>
-    <h3>Supplemental guidance</h3>
-    <h2>Baseline</h2>
-    <div class="row">
-      <%= baseline_panels(@control) %>
-    </div>
+
     <h2>References</h2>
     <ul>
       <% @references.each do |reference| %>
