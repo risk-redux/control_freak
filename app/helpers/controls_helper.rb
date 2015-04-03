@@ -7,7 +7,7 @@ module ControlsHelper
     @description = statement.description
     @parsed_description = @is_odv ? parsed_description(@description) : @description
 
-    render("controls/shared/control_statement", number: @parsed_number, level: @level, description: @description)
+    render("controls/shared/statement", number: @parsed_number, level: @level, description: @description)
   end
 
   def parsed_description(description)
@@ -23,7 +23,7 @@ module ControlsHelper
       "High" => control.is_baseline_impact_high
     }
 
-    render("controls/shared/control_baseline_panels", checks: @checks)
+    render("controls/shared/baseline_panels", checks: @checks)
   end
 
   def baseline_labels(control)
@@ -33,6 +33,19 @@ module ControlsHelper
       "High" => control.is_baseline_impact_high
     }
 
-    render("controls/shared/control_baseline_labels", checks: @checks)
+    render("controls/shared/baseline_labels", checks: @checks)
+  end
+
+  def control_supplement(supplement)
+    if supplement.nil?
+    else
+      render("controls/shared/supplement", supplement: supplement)
+    end
+  end
+  def related_controls(supplement)
+    if supplement.nil?
+    else
+      render("controls/shared/related_controls", supplement: supplement)
+    end
   end
 end

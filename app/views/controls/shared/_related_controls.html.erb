@@ -1,0 +1,5 @@
+<ul class="list-inline">
+  <% supplement.related.split(",").each do |related_control| %>
+  <li><%= link_to(related_control, control_path(related_control)) %></li>
+  <% end %>
+</ul>
