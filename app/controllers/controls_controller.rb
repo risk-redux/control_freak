@@ -15,6 +15,7 @@ class ControlsController < ApplicationController
     # More ugh, built out for enhancmenets, which are really just controls nested in controls.
     @enhancements = Control.where("is_enhancement = ? AND number REGEXP ?", true, "#{params[:number]} ")
     @enhancement_supplements = {}
+    @enhancement_statements = {}
     @enhancements.each do |enhancement|
       @enhancement_supplements[enhancement.number] = Supplement.where(number: enhancement.number).first
     end
