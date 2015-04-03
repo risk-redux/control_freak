@@ -27,7 +27,7 @@
 
     <h2>Baseline</h2>
     <%= baseline_panels(@control) %>
-    
+
     <h2>Enhancements</h2>
     <% @enhancements.each do |enhancement| %>
 
@@ -46,15 +46,7 @@
     <% end %>
 
     <h2>References</h2>
-    <ul>
-      <% @references.each do |reference| %>
-      <li>
-        <%= link_to(reference.link, { target: "_blank" }) do %>
-          <%= reference.reference %> <span class="glyphicon glyphicon-new-window"></span>
-        <% end %>
-      </li>
-      <% end %>
-    </ul>
+    <%= references(@references) %>
   </div>
 </div>
 <% end %>

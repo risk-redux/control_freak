@@ -1,0 +1,9 @@
+<ul class="list-unstyled">
+  <% references.each do |reference| %>
+  <li>
+    <%= link_to(reference.link, { target: "_blank" }) do %>
+      <%= reference.reference %> <span class="glyphicon glyphicon-new-window"></span>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
