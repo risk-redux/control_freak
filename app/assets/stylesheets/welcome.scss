@@ -1,3 +1,26 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+p.stencil {
+  font-family: "Stardos Stencil";
+  font-weight: bold;
+  font-size: 5.00em;
+  line-height: 0.90em;
+  color: #800000;
+  opacity: 0.90;
+
+  padding: 25px 0 25px 0;
+  margin: 0 0 0 0;
+
+  /* Safari */
+  -webkit-transform: rotate(-37deg);
+  /* Firefox */
+  -moz-transform: rotate(-37deg);
+  /* IE */
+  -ms-transform: rotate(-37deg);
+  /* Opera */
+  -o-transform: rotate(-37deg);
+  /* Internet Explorer */
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
