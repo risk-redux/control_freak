@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402204345) do
+ActiveRecord::Schema.define(version: 20150414134051) do
 
   create_table "controls", force: :cascade do |t|
     t.text     "family",                      limit: 65535
@@ -44,11 +44,12 @@ ActiveRecord::Schema.define(version: 20150402204345) do
   end
 
   create_table "statements", force: :cascade do |t|
-    t.string   "number",      limit: 255
-    t.text     "description", limit: 65535
-    t.boolean  "is_odv",      limit: 1
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "number",         limit: 255
+    t.text     "description",    limit: 65535
+    t.boolean  "is_odv",         limit: 1
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.text     "control_number", limit: 65535
   end
 
   create_table "supplements", force: :cascade do |t|

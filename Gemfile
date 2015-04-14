@@ -43,7 +43,8 @@ group :development, :test do
   gem 'spring'
 end
 
-
-group :production, :staging do
+group :development, :production, :staging do
   gem 'mysql2'
 end
+
+gem 'will_paginate'
