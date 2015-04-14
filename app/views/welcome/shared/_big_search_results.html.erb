@@ -1,0 +1,19 @@
+<ul class="list-unstyled">
+  <% @hits["title_hits"].each do |hit| %>
+    <%= link_to(control_path(hit.number)) do %>
+      <li><h2><%= hit.number %> <small><%= hit.title %></small></h2></li>
+    <% end %>
+  <% end %>
+</ul>
+<ul class="list-unstyled">
+  <% @hits["description_hits"].each do |hit| %>
+    <li>
+      <%= link_to(control_path(hit.control_number)) do %>
+      <h2><small><%= hit.number %></small></h2>
+      <% end %>
+      <blockquote>
+        <p><em><%= hit.description %></em></p>
+      </blockquote>
+    </li>
+  <% end %>
+</ul>

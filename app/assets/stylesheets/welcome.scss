@@ -2,25 +2,36 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-p.stencil {
-  font-family: "Stardos Stencil";
-  font-weight: bold;
-  font-size: 5.00em;
-  line-height: 0.90em;
-  color: #800000;
-  opacity: 0.90;
+.big-search input {
+  width:100%;
+  padding: 1.00em 1.00em 0.25em 2.50em;
+  margin: 75px 0 0 0;
 
-  padding: 25px 0 25px 0;
-  margin: 0 0 0 0;
+  font-size: 2.00em;
+  color: #cfcfcf;
 
-  /* Safari */
-  -webkit-transform: rotate(-37deg);
-  /* Firefox */
-  -moz-transform: rotate(-37deg);
-  /* IE */
-  -ms-transform: rotate(-37deg);
-  /* Opera */
-  -o-transform: rotate(-37deg);
-  /* Internet Explorer */
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  border: none;
+  border-bottom: solid 4px #cfcfcf;
+
+  transition: border 0.5s, color 0.5s;
+}
+.big-search input:focus {
+  outline: none;
+  color: #585858;
+
+  border-bottom: solid 4px #585858;
+
+  transition: border 0.5s, color 0.5s;
+}
+
+.big-search span {
+  position: absolute;
+  padding: 2.25em 0 0 0.25em;
+
+  font-size: 3.00em;
+  color: #cfcfcf;
+}
+
+#big-search input[type = "submit"] {
+  visibility: hidden;
 }
