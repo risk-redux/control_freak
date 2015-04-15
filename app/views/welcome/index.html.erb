@@ -2,6 +2,10 @@
 
 <% content_for :main do %>
 <div class="row">
+  <div id="welcome" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h1 class="page-header">Welcome to control_freak!</h1>
+    <p class="lead">Huzzah! No more <kbd><kbd>&#8984;</kbd>+<kbd>F</kbd></kbd>-ing through unnavigable PDFs!</p>
+  </div>
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive">
     <%= form_tag(welcome_path, :method => 'get', :id => "big-search") do %>
     <div class="big-search">

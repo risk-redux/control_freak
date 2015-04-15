@@ -7,6 +7,7 @@
   #$("#big-search-results").html("#{render 'welcome/shared/big_search_results'}")
 
 searchSub = ->
+  $("#welcome").hide(1000)
   url = "/welcome"
   form = $("#big-search")
   formData = form.serialize()
