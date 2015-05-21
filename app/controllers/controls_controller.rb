@@ -18,7 +18,7 @@ class ControlsController < ApplicationController
     @enhancement_statements = {}
     @enhancements.each do |enhancement|
       @enhancement_supplements[enhancement.number] = Supplement.where(number: enhancement.number).first
-      @enhancement_statements[enhancement.number] = Statement.where("number like ?",  "#{enhancement.number}%")
+      @enhancement_statements[enhancement.number] = Statement.where("number LIKE ?",  "#{enhancement.number}%")
     end
   end
 end
