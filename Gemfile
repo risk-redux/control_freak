@@ -45,6 +45,7 @@ end
 
 group :development, :production, :staging do
   gem 'mysql2'
+  gem 'pg'
 end
 
 gem 'will_paginate'

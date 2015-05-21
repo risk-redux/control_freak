@@ -13,58 +13,61 @@
 
 ActiveRecord::Schema.define(version: 20150414134051) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "controls", force: :cascade do |t|
-    t.text     "family",                      limit: 65535
-    t.text     "number",                      limit: 65535
-    t.text     "title",                       limit: 65535
-    t.text     "priority",                    limit: 65535
-    t.boolean  "is_baseline_impact_low",      limit: 1
-    t.boolean  "is_baseline_impact_moderate", limit: 1
-    t.boolean  "is_baseline_impact_high",     limit: 1
-    t.boolean  "is_withdrawn",                limit: 1
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
-    t.boolean  "is_enhancement",              limit: 1
+    t.text     "family"
+    t.text     "number"
+    t.text     "title"
+    t.text     "priority"
+    t.boolean  "is_baseline_impact_low"
+    t.boolean  "is_baseline_impact_moderate"
+    t.boolean  "is_baseline_impact_high"
+    t.boolean  "is_withdrawn"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "is_enhancement"
   end
 
   create_table "families", force: :cascade do |t|
-    t.text     "name",        limit: 65535
-    t.text     "acronym",     limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.text     "family_type", limit: 65535
+    t.text     "name"
+    t.text     "acronym"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "family_type"
   end
 
   create_table "references", force: :cascade do |t|
-    t.string   "number",     limit: 255
-    t.text     "reference",  limit: 65535
-    t.string   "link",       limit: 255
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "number"
+    t.text     "reference"
+    t.string   "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "statements", force: :cascade do |t|
-    t.string   "number",         limit: 255
-    t.text     "description",    limit: 65535
-    t.boolean  "is_odv",         limit: 1
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.text     "control_number", limit: 65535
+    t.string   "number"
+    t.text     "description"
+    t.boolean  "is_odv"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.text     "control_number"
   end
 
   create_table "supplements", force: :cascade do |t|
-    t.string   "number",      limit: 255
-    t.text     "description", limit: 65535
-    t.text     "related",     limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "number"
+    t.text     "description"
+    t.text     "related"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "withdrawls", force: :cascade do |t|
-    t.string   "number",            limit: 255
-    t.string   "incorporated_into", limit: 255
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.string   "number"
+    t.string   "incorporated_into"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
 end
