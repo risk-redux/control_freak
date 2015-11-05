@@ -16,7 +16,8 @@ development:
   host: 127.0.0.1
   port: 3306
   pool: 5
-  username: root
+  username: control_freak
+  password: illogicality4/reclassifications
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

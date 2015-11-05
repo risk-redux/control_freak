@@ -1,7 +1,7 @@
 <% if @hits["title_hits"].length == 0 && @hits["description_hits"].length == 0 && (@search.to_s != '') %>
-<h2 class="text-center">Y u no search for more findable criteria?!</h2>
+<h2 class="text-center">Y u no search for more reasonable search terms?!</h2>
 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xs-offset-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
-<%= image_tag("y-u-no.png", alt: "Y u no search for more findable criteria?!", class: "img-responsive") %>
+<%= image_tag("y-u-no.png", alt: "Y u no search for more reasonable criteria?!", class: "img-responsive") %>
 </div>
 <% else %>
 <ul class="list-unstyled">
@@ -14,7 +14,7 @@
 <ul class="list-unstyled">
   <% @hits["description_hits"].each do |hit| %>
     <li>
-      <%= link_to(control_path(hit.control_number)) do %>
+      <%= link_to(control_path(hit.number)) do %>
       <h2><small><%= hit.number %></small></h2>
       <% end %>
       <blockquote>
