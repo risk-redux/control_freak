@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class WithdrawlTest < ActiveSupport::TestCase
+class WithdrawalTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
