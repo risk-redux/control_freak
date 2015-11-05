@@ -4,11 +4,6 @@ class FamiliesController < ApplicationController
     @family_count = @families.size
 
     @control_count = Control.where(is_enhancement: false).group(:family).count
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @families }
-    end
   end
 
   def show
