@@ -3,7 +3,7 @@ class Control < ActiveRecord::Base
     @hits_hash = Hash.new
 
     if search && search.length > 0
-      @hits_hash["title_hits"] = Control.where('(title LIKE :search) AND (is_enhancement = false)', search: "%#{search}%")
+      @hits_hash["title_hits"] = Control.where('((title LIKE :search) OR (number LIKE :search)) AND (is_enhancement = false)', search: "%#{search}%")
       @hits_hash["description_hits"] = Statement.where('(description LIKE :search)', search: "%#{search}%")
     else
       @hits_hash["title_hits"] = []
