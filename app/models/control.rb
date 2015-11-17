@@ -1,4 +1,6 @@
 class Control < ActiveRecord::Base
+	belongs_to :family
+
   def self.search(search)
     @hits_hash = Hash.new
 
