@@ -8,16 +8,14 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  reconnect: false
+  pool: 5
+  username: musicmunky
+  password: Pas9b53!
+  socket: /var/lib/mysql/mysql.sock
 
 development:
   <<: *default
   database: control_freak_development
-  host: 127.0.0.1
-  port: 3306
-  pool: 5
-  username: control_freak
-  password: illogicality4/reclassifications
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
