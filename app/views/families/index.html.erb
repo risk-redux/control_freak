@@ -17,7 +17,9 @@
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
       <%= link_to(family_path(family.acronym), {class: "thumbnail family-icon"} ) do %>
         <div class="hidden-xs hidden-sm family-icon-meta">
-          <span class="family-count"><%= @control_count[family[:name]] %></span>
+<!--          <span class="family-count"><%#= @control_count[family[:name]] %></span>//-->
+          <span class="family-count"><%= @control_count[family.name] %></span>
+<!--		  <span class="family-count"><%#= family.controls.where(is_enhancement: false).size %></span>//-->
         </div>
         <div class="family-icon-acronym">
           <abbr title="<%= family[:name] %>"><%= family[:acronym] %></abbr>

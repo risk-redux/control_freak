@@ -20,12 +20,13 @@
     <% end %>
 
 	<% if !@supplement.nil? %>
-    <h2>Supplemental guidance</h2>
-    <%= @supplement.description %>
+ 	   <h2>Supplemental guidance</h2>
+    	<%= @supplement.description %>
 
-    <h3>Related controls</h3>
-    <%= related_controls(@supplement) %>
+	    <h3>Related controls</h3>
+    	<%= related_controls(@supplement) %>
 	<% end %>
+
     <h2>Baseline</h2>
     <%= baseline_panels(@control) %>
 
