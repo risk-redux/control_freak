@@ -3,6 +3,7 @@ class Control < ActiveRecord::Base
   has_many :statements
   has_many :references
   has_one :supplement
+  has_one :withdrawal
 
   def self.search(search)
     @hits_hash = Hash.new
