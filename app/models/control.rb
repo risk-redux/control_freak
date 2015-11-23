@@ -1,4 +1,9 @@
 class Control < ActiveRecord::Base
+  belongs_to :family
+  has_many :statements
+  has_many :references
+  has_one :supplement
+
   def self.search(search)
     @hits_hash = Hash.new
 
@@ -12,4 +17,16 @@ class Control < ActiveRecord::Base
 
     @hits_hash
   end
+
+  def children
+		@children = Control.where(parent_id: self.id)
+  end
+
+	def parent
+		@par = Control.where(id: self.parent_id)
+
+		if !@par.nil?
+			return @par.first
+		end
+	end
 end
