@@ -9,7 +9,7 @@ class ControlsController < ApplicationController
     @statements = @control.statements
 		@references = @control.references
 		@supplement = @control.supplement
-    @related_controls = @supplement.related.split(",")
+    @related_controls = @supplement.nil? ? [] : @supplement.related.split(",")
 
     @enhancements = @control.children
     @enhancement_supplements = {}
