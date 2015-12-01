@@ -26,4 +26,9 @@ test:
   <<: *default
 
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: control_freak_production
+  username: control_freak
+  password: <%= ENV['control_freak_DATABASE_PASSWORD'] %>
