@@ -16,7 +16,3 @@
 /log/*
 !/log/.keep
 /tmp
-
-# Ignore secrets.
-config/initializers/secret_token.rb
-config/secrets.yml
