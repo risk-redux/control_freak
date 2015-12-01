@@ -31,4 +31,4 @@ production:
   pool: 5
   database: control_freak_production
   username: control_freak
-  password: <%= ENV['control_freak_DATABASE_PASSWORD'] %>
+  password: <%= ENV['CONTROL_FREAK_DATABASE_PASSWORD'] %>
