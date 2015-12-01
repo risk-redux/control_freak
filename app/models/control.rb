@@ -9,8 +9,13 @@ class Control < ActiveRecord::Base
     @hits_hash = Hash.new
 
     if search && search.length > 0
-      @hits_hash["title_hits"] = Control.where('((title LIKE :search) OR (number LIKE :search)) AND (is_enhancement = false)', search: "%#{search}%")
-      @hits_hash["description_hits"] = Statement.where('(description LIKE :search)', search: "%#{search}%")
+      controls = Control.where(is_enhancement: false)
+      statements = Statement.all
+      
+      regexp_search = Regexp.new(search, Regexp::IGNORECASE)
+
+      @hits_hash["title_hits"] = controls.select{ |row| regexp_search.match(row.title) || regexp_search.match(row.number) }
+      @hits_hash["description_hits"] = statements.select{ |row| regexp_search.match(row.description) }
     else
       @hits_hash["title_hits"] = []
       @hits_hash["description_hits"] = []
