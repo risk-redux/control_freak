@@ -14,9 +14,9 @@
 <ul class='list-unstyled'>
   <% @hits['description_hits'].each do |hit| %>
     <li>
-      <%#= link_to(control_path(hit.number)) do %>
+      <%= link_to(control_path(hit.control.number)) do %>
       <h2><small><%= hit.number %></small></h2>
-      <%# end %>
+      <% end %>
       <blockquote>
         <p><em><%= hit.description %></em></p>
       </blockquote>
