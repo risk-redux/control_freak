@@ -8,7 +8,7 @@
       <small>
         <%= @control.title %>
         <% if @control.priority.to_s != '' %>
-        <span class="label label-info"><%= @control.priority %></span>
+          <span class="label label-info"><%= @control.priority %></span>
         <% end %>
       </small>
     </h1>
@@ -19,36 +19,52 @@
       <%= control_statement(statement) %>
     <% end %>
 
-    <h2>Supplemental guidance</h2>
-    <%= control_supplement(@supplement) %>
+    <% if !@supplement.nil? %>
+      <h2>Supplemental guidance</h2>
+      <%= control_supplement(@supplement) %>
 
-    <h3>Related controls</h3>
-    <%= related_controls(@supplement) %>
+      <% if !@supplement.related.empty? %>
+        <h3>Related controls</h3>
+        <%= related_controls(@supplement) %>
+      <% end %>
+    <% end %>
 
     <h2>Baseline</h2>
     <%= baseline_panels(@control) %>
 
-    <h2>Enhancements</h2>
-    <% @enhancements.each do |enhancement| %>
-    <h3><%= enhancement.number %>
-      <small>
-        <%= enhancement.title %>
-        <%= baseline_labels(enhancement) %>
-      </small>
-    </h3>
-    <h4>Description</h4>
-    <% @enhancement_statements[enhancement.number].each do |enhancement_statement| %>
-      <%= enhancement_statement(enhancement_statement) %>
-    <% end %>
-    <h4>Supplemental guidance</h4>
-    <%= control_supplement(@enhancement_supplements[enhancement.number]) %>
+    <% if !@enhancements.empty? %>
+      <h2>Enhancements</h2>
+      <% @enhancements.each do |enhancement| %>
+        <h3><%= enhancement.number %>
+          <small>
+            <%= enhancement.title %>
+            <%= baseline_labels(enhancement) %>
+          </small>
+        </h3>
 
-    <h5>Related controls</h5>
-    <%= related_controls(@enhancement_supplements[enhancement.number]) %>
+        <h4>Description</h4>
+        <% @enhancement_statements[enhancement.number].each do |enhancement_statement| %>
+          <%= enhancement_statement(enhancement_statement) %>
+        <% end %>
+
+        <% if !@enhancement_supplements[enhancement.number].nil? %>
+          <% if !@enhancement_supplements[enhancement.number].description.nil? %>
+            <h4>Supplemental guidance</h4>
+            <%= control_supplement(@enhancement_supplements[enhancement.number]) %>
+          <% end %>
+
+          <% if !@enhancement_supplements[enhancement.number].related.empty? %>
+            <h5>Related controls</h5>
+            <%= related_controls(@enhancement_supplements[enhancement.number]) %>
+          <% end %>
+        <% end %>
+      <% end %>
     <% end %>
 
-    <h2>References</h2>
-    <%= references(@references) %>
+    <% if !@references.empty? %>
+      <h2>References</h2>
+      <%= references(@references) %>
+    <% end %>
   </div>
 </div>
 <% end %>

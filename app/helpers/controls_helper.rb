@@ -48,17 +48,11 @@ module ControlsHelper
   end
 
   def control_supplement(supplement)
-    if supplement.nil?
-    else
-      render("controls/shared/supplement", supplement: supplement)
-    end
+    render("controls/shared/supplement", supplement: supplement)
   end
 
   def related_controls(supplement)
-    if supplement.nil?
-    else
-      render("controls/shared/related_controls", supplement: supplement)
-    end
+    render("controls/shared/related_controls", supplement: supplement)
   end
 
   def references(references)
