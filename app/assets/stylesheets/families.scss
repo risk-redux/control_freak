@@ -37,3 +37,17 @@ a.family-icon {
   text-align: center;
   line-height: 1.25em;
 }
+
+@media (min-width: 1200px) {
+  a.family-icon {
+    height: 190px;
+    width: 190px;
+    text-decoration: none;
+  }
+
+  .family-icon-acronym {
+    font-size: 7.00em;
+    text-align: center;
+    line-height: 1.25em;
+  }
+}
