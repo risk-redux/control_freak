@@ -6,7 +6,7 @@ class ControlsController < ApplicationController
   def show
     @control = Control.where(number: params[:number]).first
 
-    @statements = @control.statements
+    @statements = @control.statements.order(:id)
 		@references = @control.references
 		@supplement = @control.supplement
     @related_controls = @supplement.nil? ? [] : @supplement.related.split(",")
