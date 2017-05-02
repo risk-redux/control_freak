@@ -52,10 +52,11 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'mysql2'
 end
 
 group :production, :test do
-  gem 'mysql2'
+  gem 'pg'
 end
 
 # Manage application environment variables
