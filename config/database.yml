@@ -4,31 +4,20 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 #
-
 default: &default
   adapter: mysql2
   encoding: utf8
-  reconnect: false
+  host: <%= ENV["DATABASE_HOST"] %>
+  port: 3306
+  database: <%= ENV["DATABASE_NAME"] %>
+  username: <%= ENV["DATABASE_USER"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+  socket: /tmp/mysql.sock
+  timeout: 5000
+  pool: 5
 
 development:
   <<: *default
-  database: control_freak_development
-  host: 127.0.0.1
-  port: 3306
-  pool: 5
-  username: control_freak
-  password: illogicality4/reclassifications
-
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test:
-  <<: *default
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  database: control_freak_production
-  username: control_freak
-  password: <%= ENV['CONTROL_FREAK_DATABASE_PASSWORD'] %>
+  <<: *default
