@@ -1,6 +1,6 @@
 class ControlsController < ApplicationController
   def index
-    @controls = Control.where(is_enhancement: false)
+    @controls = Control.all
   end
 
   def show
