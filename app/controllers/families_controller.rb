@@ -8,6 +8,6 @@ class FamiliesController < ApplicationController
 
   def show
     @family = Family.where(acronym: params[:acronym]).first
-    @controls = @family.controls.where(is_enhancement: false)
+    @controls = @family.controls.all
   end
 end
