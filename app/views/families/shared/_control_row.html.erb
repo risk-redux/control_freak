@@ -6,7 +6,7 @@
   </td>
   <td><%= control[:title] %></td>
   <td><%= control[:priority] %></td>
-  <% if @row_type == "Normal" %>
+  <% if @row_class == "control" || @row_class == "enhancement" %>
   <td class="text-center">
     <% if control.is_baseline_impact_low %>
     <span class="glyphicon glyphicon-ok"></span>
@@ -22,7 +22,11 @@
     <span class="glyphicon glyphicon-ok"></span>
     <% end %>
   </td>
+  <% elsif @row_class == "not-selected" %>
+  <td colspan="3" class="text-center">Not Selected</td>
+  <% elsif @row_class == "withdrawn" %>
+  <td colspan="3" class="text-center">Withdrawn</td>
   <% else %>
-  <td colspan="3" class="text-center"><%= @row_type %></td>
+  <td colspan="3" class="text-center"></td>
   <% end %>
 </tr>
