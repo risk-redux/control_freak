@@ -15,12 +15,12 @@ I'm open to [Issues](issues) and [Pull Requests](pulls)!
 1. Clone the code from this repository.
 1. Install dependencies (i.e., listed in `Gemfile`). I use [Bundler](https://bundler.io/), so a simple `bundle install` gets everything in order.
 1. Create a file inside `config/` called "application.yml", and define the following environmental variables:
-    1. `SECRET_KEY_BASE`
-    1. `RAILS_ENV`
-    1. `DATABASE_NAME`
-    1. `DATABASE_USER`
-    1. `DATABASE_HOST`
-    1. `DATABASE_PASSWORD`
+    - `SECRET_KEY_BASE`
+    - `RAILS_ENV`
+    - `DATABASE_NAME`
+    - `DATABASE_USER`
+    - `DATABASE_HOST`
+    - `DATABASE_PASSWORD`
 1. Modify the `config/database.yml` file as appropriate for the target environment.
 1. Create the specified database user with appropriate permissions to create a new schema.
 1. Bootstrap the database:
