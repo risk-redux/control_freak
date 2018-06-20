@@ -34,7 +34,35 @@ p{
   visibility: hidden;
 }
 
-.ignore {
+table.control-table td {
+  position: relative;
+}
+
+tr.withdrawn td:before {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  border-bottom-style: dashed;
+  border-bottom-width: 1px;
+  border-bottom-color: #cc8888;
+  width: 100%;
+}
+
+.withdrawn {
+  color: #cccccc;
+}
+
+.not-selected {
   font-style: italic;
   color: #bbbbbb;
+}
+
+.enhancement {
+  font-style: italic;
+  color: #555555;
+}
+
+.control {
+  font-weight: bold;
 }

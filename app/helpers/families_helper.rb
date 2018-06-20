@@ -1,24 +1,19 @@
 module FamiliesHelper
   def control_row(control)
-    @row_type = row_type(control)
-    @row_class = row_class(@row_type)
+    @row_class = row_class(control)
 
     render("families/shared/control_row", control: control, row_class: @row_class)
   end
 
-  def row_class(row_type)
-    if (row_type == "Withdrawn") || (row_type == "Not selected")
-      return "ignore"
-    end
-  end
-
-  def row_type(control)
-    if control.is_withdrawn == true
-      return "Withdrawn"
+  def row_class(control)
+    if control.is_withdrawn
+      return "withdrawn"
     elsif !(control.is_baseline_impact_low || control.is_baseline_impact_moderate || control.is_baseline_impact_high)
-      return "Not selected"
+      return "not-selected"
+    elsif control.is_enhancement
+      return "enhancement"
     else
-      return "Normal"
+      return "control"
     end
   end
 end
