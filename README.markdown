@@ -1,31 +1,9 @@
-# control_freak
+# Welcome to `control_freak`!
 
-Utterly exhausted with the process of Google searching for a NIST special publication, searching for a particular version of in the document library, loading the file in some Adobe app, and then <kbd>⌘ + F</kbd>-ing my way through the hundreds of pages… I took matters into my own hands.
+`control_freak` is a part of the [Risk Redux](https://risk-redux.io) project, which seeks to turn NIST frameworks into practical web applications.
 
-Thus was born [control_freak][control_freak]. It’s a simple Ruby on Rails application filled with data that I parsed out of the frequently reference 800-53 (essentially a catalogue of security controls). The application supports some searching capabilities (poorly) and a simpler organization of all the interconnected information that is currently locked into those god awful PDFs. Huzzah!
-
-[control_freak]: http://controlfreak.io
+Realizing that _[NIST SP 800-53, Security and Privacy Controls for Federal Information Systems and Organizations](https://csrc.nist.gov/publications/detail/sp/800-53/rev-4/final)_ is a fantastic reference for cybersecurity controls, but that <kbd>⌘ + F</kbd>-ing through dense PDFs was a fool's errand, we created `control_freak` to support some simple searching capabilities (poorly) and provide a simpler organization of all the interconnected information.
 
 # Contributing
 
 I'm open to [Issues](issues) and [Pull Requests](pulls)!
-
-## Getting started
-
-1. Clone the code from this repository.
-1. Install dependencies (i.e., listed in `Gemfile`). I use [Bundler](https://bundler.io/), so a simple `bundle install` gets everything in order.
-1. Create a file inside `config/` called "application.yml", and define the following environmental variables:
-    - `SECRET_KEY_BASE`
-    - `RAILS_ENV`
-    - `DATABASE_NAME`
-    - `DATABASE_USER`
-    - `DATABASE_HOST`
-    - `DATABASE_PASSWORD`
-1. Modify the `config/database.yml` file as appropriate for the target environment.
-1. Create the specified database user with appropriate permissions to create a new schema.
-1. Bootstrap the database:
-`> rails db:create && rails db:schema:load`
-1. Populate the database:
-`> rails db:seed`
-1. Run the Rails server:
-`> rails s`
