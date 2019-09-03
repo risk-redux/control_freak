@@ -1,25 +1,13 @@
 <% if check %>
-<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>
-  <div class='panel panel-info'>
-    <div class='panel-heading'>
-      <h3 class='panel-title'>
-        <span class='hidden-xs hidden-sm'><%= level %></span>
-        <span class='hidden-md hidden-lg'><%= level[0] %></span>
-        <span class='glyphicon glyphicon-ok pull-right' title='Selected'></span>
-      </h3>
-    </div>
-  </div>
+<div class="col-4">
+  <span class="giant badge-pill badge-success">
+    <%= level[0] %> <i class='fa fa-check-circle' title='Selected'></i>
+  </span>
 </div>
 <% else %>
-<div class='col-xs-4 col-sm-4 col-md-4 col-lg-4'>
-  <div class='panel panel-default'>
-    <div class='panel-heading'>
-      <h3 class='panel-title'>
-        <span class='hidden-xs hidden-sm'><%= level %></span>
-        <span class='hidden-md hidden-lg'><%= level[0] %></span>
-        <span class='glyphicon glyphicon-minus pull-right' title='Not selected'></span>
-      </h3>
-    </div>
-  </div>
+<div class="col-4">
+  <span class="giant badge-pill badge-light">
+    <%= level[0] %> <i class='fa fa-times-circle' title='Not selected'></i>
+  </span>
 </div>
 <% end %>

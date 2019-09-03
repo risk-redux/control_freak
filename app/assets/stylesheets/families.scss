@@ -2,52 +2,38 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-a.family-icon {
-  height: 13vw;
-  width: 13vw;
+.card-title {
+  font-size: 4vw;
+  text-align: center;
+  padding-bottom: 0.00em;
+  margin-bottom: 0.00em;
+}
+
+.card-title abbr {
   text-decoration: none;
+  cursor: pointer;
 }
 
-.family-icon-meta {
-  padding: 0px;
-  margin: 0px;
+.card-header {
   text-align: right;
-  line-height: 1.25em;
+  border-bottom: none;
+  background-color: #ffffff;
 }
 
-.family-icon-meta span.family-type {
-  font-size: 0.65em;
-  font-style: italic;
-}
-
-.family-icon-meta span.family-count {
-  font-size: 1.75em;
-  font-style: italic;
-}
-
-.family-icon-acronym {
-  font-size: 5vw;
+.card-text {
+  font-size: 0.75em;
   text-align: center;
-  line-height: 1.25em;
 }
 
-.family-icon-name {
-  font-size: 0.65em;
-  font-style: italic;
-  text-align: center;
-  line-height: 1.25em;
+.card {
+  height: 15vw;
+  width: 15vw;
 }
 
-@media (min-width: 1200px) {
-  a.family-icon {
-    height: 190px;
-    width: 190px;
-    text-decoration: none;
-  }
+a {
+  padding-bottom: 1.50em;
+}
 
-  .family-icon-acronym {
-    font-size: 7.00em;
-    text-align: center;
-    line-height: 1.25em;
-  }
+a:hover {
+  text-decoration: none;
 }

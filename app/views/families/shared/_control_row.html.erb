@@ -1,25 +1,31 @@
 <tr class="<%= @row_class %>">
-  <td>
+  <td scope="row">
     <%= link_to(control_path(control.number)) do %>
     <%= control[:number] %>
     <% end %>
   </td>
   <td><%= control[:title] %></td>
-  <td><%= control[:priority] %></td>
+  <td class="text-center"><%= control[:priority] %></td>
   <% if @row_class == "control" || @row_class == "enhancement" %>
-  <td>
+  <td class="text-center">
     <% if control.is_baseline_impact_low %>
-    <span class="glyphicon glyphicon-ok"></span>
+    <i class="fa fa-check-circle"></i>
+    <% else %>
+    <i class="fa fa-times-circle"></i>
     <% end %>
   </td>
-  <td>
+  <td class="text-center">
     <% if control.is_baseline_impact_moderate %>
-    <span class="glyphicon glyphicon-ok"></span>
+    <i class="fa fa-check-circle"></i>
+    <% else %>
+    <i class="fa fa-times-circle"></i>
     <% end %>
   </td>
-  <td>
+  <td class="text-center">
     <% if control.is_baseline_impact_high %>
-    <span class="glyphicon glyphicon-ok"></span>
+    <i class="fa fa-check-circle"></i>
+    <% else %>
+    <i class="fa fa-times-circle"></i>
     <% end %>
   </td>
   <% elsif @row_class == "not-selected" %>

@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <%= render partial: "shared/head" %>
+
   <body>
+    <%= render partial: "shared/nav" %>
 
-    <!-- Wrap all page content here -->
-    <div id="wrap">
-      <%= render partial: "shared/nav" %>
-
+    <main role="main" class="container">
       <!-- Begin page content -->
-      <div class="container">
-        <%= yield :main %>
-      </div>
-    </div>
-    <!-- Close up the page wrapping. -->
-    
+      <%= yield :main %>
+    </main>
+
     <%= render partial: "shared/foot" %>
 
+    <%= render partial: "shared/scripts" %>
   </body>
 </html>
