@@ -1,8 +1,6 @@
-<tr class="<%= @row_class %>">
+<tr data-link="<%= control_path(control.number) %>">
   <td scope="row">
-    <%= link_to(control_path(control.number)) do %>
     <%= control[:number] %>
-    <% end %>
   </td>
   <td><%= control[:title] %></td>
   <td class="text-center"><%= control[:priority] %></td>
