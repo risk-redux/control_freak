@@ -1,3 +1,15 @@
 tr[data-link]:hover {
   cursor: pointer;
 }
+
+tr.not-selected, tr.withdrawn {
+  font-style: italic;
+  color: #bbbbbb;
+}
+
+tr.enhancement {
+}
+
+tr.control {
+  font-weight: bold;
+}
