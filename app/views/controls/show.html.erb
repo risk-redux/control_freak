@@ -7,10 +7,10 @@
       <%= @control.number %>
       <small>
         <%= @control.title %>
-        <% if @control.priority.to_s != '' %>
-          <span class="label label-info"><%= @control.priority %></span>
-        <% end %>
       </small>
+      <% if @control.priority.to_s != '' %>
+        <span class="badge badge-pill badge-info"><%= @control.priority %></span>
+      <% end %>
     </h1>
     <p class="lead"></p>
 
