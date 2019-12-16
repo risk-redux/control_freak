@@ -13,3 +13,12 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
+
+$(document).ready(function() {
+  $('tr[data-link]').click(function() {
+    const href = $(this).attr('data-link');
+    if (href) {
+      window.location = href;
+    }
+  });
+});
