@@ -1,3 +1,5 @@
+ActiveRecord::Base.include_root_in_json = true
+
 class FamiliesController < ApplicationController
   def index
     @families = Family.all
@@ -7,7 +9,7 @@ class FamiliesController < ApplicationController
 
     respond_to do |format|
       format.html {}
-      format.json { render json: @families }
+      format.json { render json: @families.as_json(except: [:id, :created_at, :updated_at]) }
     end
   end
 
@@ -17,7 +19,12 @@ class FamiliesController < ApplicationController
 
     respond_to do |format|
       format.html {}
-      format.json { render json: @controls }
+      format.json {
+        render json: @family.as_json(except: [:id, :created_at, :updated_at],
+        include: [
+          controls: { except: [:id, :family_id, :created_at, :updated_at] }
+        ])
+      }
     end
   end
 end
