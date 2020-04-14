@@ -2,7 +2,7 @@ ActiveRecord::Base.include_root_in_json = true
 
 class FamiliesController < ApplicationController
   # See also the cache settings on the `control` controller.
-  caches_page :index
+  caches_page :index, :show
 
   def index
     @families = Family.all
