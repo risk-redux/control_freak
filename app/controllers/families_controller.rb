@@ -5,7 +5,7 @@ class FamiliesController < ApplicationController
     @families = Family.all
     @family_count = @families.size
 
-    @control_count = Control.group(:family_name).count
+    @control_count = Control.group(:family).count
 
     respond_to do |format|
       format.html {}
