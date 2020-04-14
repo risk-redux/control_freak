@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2020_11_23_213538) do
     t.text "number", limit: 65535
     t.text "sort_number", limit: 65535
     t.text "title", limit: 65535
+    t.text "status", limit: 65535
+    t.text "label", limit: 65535
 
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

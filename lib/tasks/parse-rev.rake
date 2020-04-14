@@ -126,8 +126,22 @@ namespace :rev_content do
         c[:family_id] = family_id
         c[:parent_id] = parent_id
         c[:number] = control['id']
-        c[:sort_number] = control['properties'][1]['value']
         c[:title] = control['title']
+
+        unless control['properties'].nil?
+          control['properties'].each do |property|
+            case property['name']
+            when 'label'
+              c[:label] = property['value']
+            when 'status'
+              c[:status] = property['value']
+            when 'sort-id'
+              c[:sort_number] = property['value']
+            else
+              raise "Unknown property: #{property['name']}: #{property['value']}"
+            end
+          end
+        end
 
         c.save
 
