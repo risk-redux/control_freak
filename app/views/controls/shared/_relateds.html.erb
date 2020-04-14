@@ -1,0 +1,11 @@
+<% unless relateds.empty? %>
+<ul class="list-inline">
+  <% relateds.each do |r| %>
+  <li class="list-inline-item">
+    <%= link_to(control_path(r.sort_number.upcase), title: r.title) do %>
+    <span class="badge badge-pill badge-primary"><%= r.sort_number.upcase %></span>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+<% end %>

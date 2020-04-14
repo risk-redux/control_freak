@@ -21,6 +21,8 @@
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
+/.vscode
+/vendor/bundle
 
 /public/assets
 .byebug_history

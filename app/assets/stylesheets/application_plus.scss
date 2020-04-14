@@ -2,12 +2,19 @@ tr[data-link]:hover {
   cursor: pointer;
 }
 
-tr.not-selected, tr.withdrawn {
+tr.incorporated-into {
   font-style: italic;
   color: #bbbbbb;
 }
 
+tr.moved-to {
+  font-style: italic;
+  color: #bbbbbb;
+}
+
+
 tr.enhancement {
+  font-style: italic;
 }
 
 tr.control {

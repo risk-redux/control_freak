@@ -1,9 +1,11 @@
-<ol class='list'>
-  <% references.each do |reference| %>
-  <li class="list-item">
-    <%= link_to(reference.link, { target: '_blank' }) do %>
-      <%= reference.reference %> <span class='glyphicon glyphicon-new-window'></span>
-    <% end %>
+<% unless references.empty? %>
+<ul>
+  <% references.each do |r| %>
+  <li>
+    <%= link_to(r.href) do %>
+    <%= r.number %><i class="fas fa-external-link-alt"></i>
+    <% end %> <em><%= r.citation %></em>
   </li>
   <% end %>
-</ol>
+</ul>
+<% end %>

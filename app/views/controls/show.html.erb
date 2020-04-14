@@ -1,70 +1,80 @@
-<%- view_title "Controls | #{@control.number} - #{@control.title}" %>
+<%- view_title "Controls | #{@control.number.upcase} - #{@control.title}" %>
 
 <% content_for :main do %>
-<div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <h1 class="page-header">
-      <%= @control.number %>
-      <small>
-        <%= @control.title %>
-      </small>
-      <% if @control.priority.to_s != '' %>
-        <span class="badge badge-pill badge-info"><%= @control.priority %></span>
-      <% end %>
-    </h1>
-    <p class="lead"></p>
 
-    <h2>Description</h2>
-    <% @statements.each do |statement| %>
-      <%= control_statement(statement) %>
-    <% end %>
+  <h1 class="page-header">
+    <%= @control.sort_number.upcase %>
+    <small>
+      <%= @control.title %>
+    </small>
+  </h1>
 
-    <% if !@supplement.nil? %>
-      <h2>Supplemental guidance</h2>
-      <%= control_supplement(@supplement) %>
-
-      <% if !@supplement.related.empty? %>
-        <h3>Related controls</h3>
-        <%= related_controls(@supplement) %>
-      <% end %>
-    <% end %>
-
-    <h2>Baseline</h2>
-    <%= baseline_panels(@control) %>
-
-    <% if !@enhancements.empty? %>
-      <h2>Enhancements</h2>
-      <% @enhancements.each do |enhancement| %>
-        <h3><%= enhancement.number %>
-          <small>
-            <%= enhancement.title %>
-            <%= baseline_labels(enhancement) %>
-          </small>
-        </h3>
-
-        <h4>Description</h4>
-        <% @enhancement_statements[enhancement.number].each do |enhancement_statement| %>
-          <%= enhancement_statement(enhancement_statement) %>
-        <% end %>
-
-        <% if !@enhancement_supplements[enhancement.number].nil? %>
-          <% if !@enhancement_supplements[enhancement.number].description.nil? %>
-            <h4>Supplemental guidance</h4>
-            <%= control_supplement(@enhancement_supplements[enhancement.number]) %>
-          <% end %>
-
-          <% if !@enhancement_supplements[enhancement.number].related.empty? %>
-            <h5>Related controls</h5>
-            <%= related_controls(@enhancement_supplements[enhancement.number]) %>
-          <% end %>
-        <% end %>
-      <% end %>
-    <% end %>
-
-    <% if !@references.empty? %>
-      <h2>References</h2>
-      <%= references(@references) %>
-    <% end %>
+  <% unless @control.parts.where(label: 'statement', parent_id: nil).empty? %>
+  <div class="control-body bg-light">
+    <%= statement(@control.parts.where(label: 'statement', parent_id: nil), 0) %>
   </div>
-</div>
+
+  <% unless @control.parameters.empty? %>
+  <%= parameter_table(@control.parameters) %>
+  <% end %>
+  <% end %>
+
+  <% unless @control.parts.where(label: 'guidance', parent_id: nil).empty? %>
+  <h2>Guidance</h2>
+  <% @control.parts.where(label: 'guidance', parent_id: nil).each do |g| %>
+  <% g.prose.split("\n").each do |paragraph| %>
+  <p><%= paragraph %></p>
+  <% end %>
+  <% end %>
+  <% end %>
+
+  <% unless @control.links.where(link_type: 'reference').empty? %>
+  <h2>References <span class="badge badge-info"><%= @control.links.where(link_type: 'reference').count %></span></h2>
+  <%= references(@control.links.where(link_type: 'reference')) %>
+  <% end %>
+
+  <% unless @control.links.where(link_type: 'related').empty? %>
+  <h2>Related controls <span class="badge badge-info"><%= @control.links.where(link_type: 'related').count %></span></h2>
+  <%= relateds(@control.links.where(link_type: 'related')) %>
+  <% end %>
+
+  <hr/>
+
+  <% @control.children.each do |child| %>
+  <h1>
+    <%= child.sort_number.upcase %>
+    <small>
+      <%= child.title %>
+    </small>
+  </h1>
+
+  <% unless child.parts.where(label: 'statement').empty? %>
+  <div class="control-body bg-light">
+    <%= statement(child.parts.where(label: 'statement'), 0) %>
+  </div>
+  <% end %>
+  
+  <% unless child.parameters.empty? %>
+  <%= parameter_table(child.parameters) %>
+  <% end %>
+
+  <% unless child.parts.where(label: 'guidance').empty? %>
+  <h2>Guidance</h2>
+  <% child.parts.where(label: 'guidance').each do |g| %>
+  <p><%= g.prose %></p>
+  <% end %>
+  <% end %>
+
+  <% unless child.links.where(link_type: 'reference').empty? %>
+  <h2>References <span class="badge badge-info"><%= child.links.where(link_type: 'reference').count %></span></h2>
+  <%= references(child.links.where(link_type: 'reference')) %>
+  <% end %>
+
+  <% unless child.links.where(link_type: 'related').empty? %>
+  <h2>Related controls <span class="badge badge-info"><%= child.links.where(link_type: 'related').count %></span></h2>
+  <%= relateds(child.links.where(link_type: 'related')) %>
+  <% end %>
+
+  <hr/>
+  <% end %>
 <% end %>

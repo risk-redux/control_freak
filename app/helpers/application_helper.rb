@@ -16,14 +16,18 @@ module ApplicationHelper
   end
 
   def row_class(control)
-    if control.is_withdrawn
-      return "withdrawn"
-    elsif !(control.is_baseline_impact_low || control.is_baseline_impact_moderate || control.is_baseline_impact_high)
-      return "not-selected"
-    elsif control.is_enhancement
-      return "enhancement"
+    link_types = control.links.distinct.pluck(:link_type)
+
+    if link_types.include?('incorporated-into')
+      return "incorporated-into"
+    elsif link_types.include?('moved-to')
+      return "moved-to"
     else
-      return "control"
+      unless control[:parent_id].nil?
+        return "enhancement"
+      else
+        return "control"
+      end
     end
   end
 end

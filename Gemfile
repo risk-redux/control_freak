@@ -21,9 +21,6 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 
-# Support for Heroku deployments
-gem 'rails_12factor'
-
 # For paging
 gem 'will_paginate'
 

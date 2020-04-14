@@ -1,9 +1,0 @@
-<ul class='list-inline'>
-  <% supplement.related.split(',').each do |related_control| %>
-  <li class="list-inline-item">
-    <%= link_to(control_path(related_control)) do %>
-      <span class="badge-pill badge-primary"><%= related_control %></span>
-    <% end %>
-  </li>
-  <% end %>
-</ul>

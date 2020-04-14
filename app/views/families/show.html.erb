@@ -1,9 +1,9 @@
-<%- view_title "Families | #{@family.acronym} - #{@family.name}" %>
+<%- view_title "Families | #{@family.acronym} - #{@family.title}" %>
 
 <% content_for :main do %>
 <div class="row">
   <div class="col-xs-12">
-    <h1 class="page-header"><%= @family.acronym %> - <%= @family.name %></h1>
+    <h1 class="page-header"><%= @family.acronym.upcase %> - <%= @family.title %></h1>
     <p class="lead"></p>
   </div>
   <div class="col-xs-12 table-responsive">
@@ -13,10 +13,9 @@
         <tr>
           <th scope="col">Number</th>
           <th scope="col">Title</th>
-          <th scope="col">Priority</th>
-          <th scope="col">Low</th>
-          <th scope="col">Moderate</th>
-          <th scope="col">High</th>
+          <th scope="col">Parameters</th>
+          <th scope="col">References</th>
+          <th scope="col">Related controls</th>
         </tr>
       </thead>
       <tbody>

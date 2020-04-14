@@ -5,7 +5,7 @@ class FamiliesController < ApplicationController
     @families = Family.all
     @family_count = @families.size
 
-    @control_count = Control.where(is_enhancement: false).group(:family_name).count
+    @control_count = Control.group(:family_name).count
 
     respond_to do |format|
       format.html {}
@@ -14,7 +14,7 @@ class FamiliesController < ApplicationController
   end
 
   def show
-    @family = Family.where(acronym: params[:acronym]).first
+    @family = Family.where(acronym: params[:acronym].downcase).first
     @controls = @family.controls.all
 
     respond_to do |format|

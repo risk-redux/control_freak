@@ -10,62 +10,73 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2015_11_23_213538) do
-
-  create_table "controls", force: :cascade do |t|
-    t.text "family_name", limit: 65535
-    t.text "number", limit: 65535
-    t.text "title", limit: 65535
-    t.text "priority", limit: 65535
-    t.boolean "is_baseline_impact_low", limit: 1
-    t.boolean "is_baseline_impact_moderate", limit: 1
-    t.boolean "is_baseline_impact_high", limit: 1
-    t.boolean "is_withdrawn", limit: 1
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "is_enhancement", limit: 1
-    t.integer "parent_id", limit: 4
-    t.integer "family_id", limit: 4
-  end
+ActiveRecord::Schema.define(version: 2020_11_23_213538) do
 
   create_table "families", force: :cascade do |t|
-    t.text "name", limit: 65535
     t.text "acronym", limit: 65535
+    t.text "title", limit: 65535
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "family_type", limit: 65535
+  end
+
+  create_table "controls", force: :cascade do |t|
+    t.belongs_to :family
+
+    t.references :parent
+
+    t.text "number", limit: 65535
+    t.text "sort_number", limit: 65535
+    t.text "title", limit: 65535
+
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "parameters", force: :cascade do |t|
+    t.belongs_to :control
+
+    t.text "number", limit: 65535
+    t.text "label", limit: 65535
+    t.text "selection", limit: 65535
+    t.text "alternatives", limit: 65535
+    t.text "depends_on", limit: 65535
+
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "references", force: :cascade do |t|
-    t.text "reference", limit: 65535
-    t.string "link", limit: 255
+    t.text "number", limit: 65535
+    t.text "citation", limit: 65535
+    t.text "href", limit: 65535
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "control_id", limit: 4
   end
 
-  create_table "statements", force: :cascade do |t|
-    t.string "number", limit: 255
-    t.text "description", limit: 65535
-    t.boolean "is_odv", limit: 1
+  create_table "parts", force: :cascade do |t|
+    t.belongs_to :control
+    
+    t.references :parent
+
+    t.text "number", limit:65535
+    t.text "label", limit: 65535
+    t.text "prepend", limit: 65535
+    t.text "prose", limit: 65535
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "control_id", limit: 65535
   end
 
-  create_table "supplements", force: :cascade do |t|
-    t.text "description", limit: 65535
-    t.text "related", limit: 65535
+  create_table "links", force: :cascade do |t|
+    t.belongs_to :control
+    
+    t.text "href", limit: 65535
+    t.text "link_text", limit: 65535
+    t.text "link_type", limit: 65535
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "control_id", limit: 4
   end
-
-  create_table "withdrawals", force: :cascade do |t|
-    t.string "incorporated_into", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "control_id", limit: 4
-  end
-
 end

@@ -1,38 +1,35 @@
-<tr data-link="<%= control_path(control.number) %>" class="<%= row_class(control) %>">
+<% if row_class(control) == 'incorporated-into' %>
+<tr class="<%= row_class(control) %>">
   <td scope="row">
-    <%= link_to control_path(control.number) do %>
-    <%= control[:number] %>
+    <%= control[:sort_number].upcase %>
+  </td>
+  <td><%= control[:title] %></td>
+  <td colspan="3">
+    Incorporated into
+    <%= control.links.where(link_type: 'incorporated-into').pluck(:link_text).to_sentence %>.
+  </td>
+</tr>
+<% elsif row_class(control) == 'moved-to' %>
+<tr class="<%= row_class(control) %>">
+  <td scope="row">
+    <%= control[:sort_number].upcase %>
+  </td>
+  <td><%= control[:title] %></td>
+  <td colspan="3">
+    Moved to
+    <%= control.links.where(link_type: 'moved-to').pluck(:link_text).to_sentence %>.
+  </td>
+</tr>
+<% else %>
+<tr data-link="<%= control_path(control.sort_number) %>" class="<%= row_class(control) %>">
+  <td scope="row">
+    <%= link_to control_path(control.sort_number) do %>
+    <%= control.sort_number.upcase %>
     <% end %>
   </td>
   <td><%= control[:title] %></td>
-  <td class="text-center"><%= control[:priority] %></td>
-  <% if @row_class == "control" || @row_class == "enhancement" %>
-  <td class="text-center">
-    <% if control.is_baseline_impact_low %>
-    <i class='fa fa-check-circle'></i>
-    <% else %>
-    <i class="fa fa-times-circle"
-    <% end %>
-  </td>
-  <td class="text-center">
-    <% if control.is_baseline_impact_moderate %>
-    <i class='fa fa-check-circle'></i>
-    <% else %>
-    <i class="fa fa-times-circle"
-    <% end %>
-  </td>
-  <td class="text-center">
-    <% if control.is_baseline_impact_high %>
-    <i class='fa fa-check-circle'></i>
-    <% else %>
-    <i class="fa fa-times-circle"
-    <% end %>
-  </td>
-  <% elsif @row_class == "not-selected" %>
-  <td colspan="3" class="text-center">Not Selected</td>
-  <% elsif @row_class == "withdrawn" %>
-  <td colspan="3" class="text-center">Withdrawn</td>
-  <% else %>
-  <td colspan="3" class="text-center"></td>
-  <% end %>
+  <td><%= control.parameters.count %></td>
+  <td><%= control.links.where(link_type: 'reference').count %></td>
+  <td><%= control.links.where(link_type: 'related').count %></td>
 </tr>
+<% end %>

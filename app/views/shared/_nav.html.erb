@@ -2,8 +2,10 @@
   <!-- Fixed navbar -->
   <nav class="navbar navbar-light" style="background-color: #ffffff;">
     <div class="container">
-      <%= link_to("#{Rails.application.config.app_name}", root_path(), { class: "navbar-brand" }) %>
-
+      <%= link_to(root_path(), { class: "navbar-brand", title: "control_freak for NIST SP 800-53 Revision 5!" }) do %>
+      <%= "#{Rails.application.config.app_name}" %>
+      <i class="fas fa-fire-alt text-danger"></i>
+      <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

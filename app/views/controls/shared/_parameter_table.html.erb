@@ -1,0 +1,32 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col" style="width: 20%">Parameter ID</th>
+      <th scope="col">Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% parameters.each do |p| %>
+    <tr>
+      <th scope="col"><%= p.number %></th>
+      <td>
+        <% unless p.label.nil? %>
+        <%= p.label %>
+        <% end %>
+
+        <% unless p.depends_on.nil? %>
+        (depends on: <%= p.depends_on %>)
+        <% end %>
+
+        <% unless p.selection.nil? && p.alternatives.nil? %>
+        <ul>
+          <% p.alternatives.gsub(/[\[\]\"]/,'').split(', ').each do |a| %>
+          <li><%= a %></li>
+          <% end %>
+        </ul>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

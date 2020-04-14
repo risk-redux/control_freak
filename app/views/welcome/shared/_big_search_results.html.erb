@@ -1,21 +1,23 @@
-<% if @hits['title_hits'].length == 0 && @hits['description_hits'].length == 0 && (@search.to_s != '') %>
+<% if @hits['title_hits'].length == 0 && @hits['prose_hits'].length == 0 && (@search.to_s != '') %>
 <h2 class='text-center'>No matches found.</h2>
 <% else %>
 <ul class='list-unstyled'>
   <% @hits['title_hits'].each do |hit| %>
-    <%= link_to(control_path(hit.number)) do %>
-      <li><h2><%= hit.number %> <small><%= hit.title %></small></h2></li>
+    <% unless hit.sort_number == 'Withdrawn' %>
+    <%= link_to(control_path(hit.sort_number)) do %>
+      <li><h2><%= hit.sort_number %> <small><%= hit.title %></small></h2></li>
+    <% end %>
     <% end %>
   <% end %>
 </ul>
 <ul class='list-unstyled'>
-  <% @hits['description_hits'].each do |hit| %>
+  <% @hits['prose_hits'].each do |hit| %>
     <li>
-      <%= link_to(control_path(hit.control.number)) do %>
-      <h2><small><%= hit.number %></small></h2>
+      <%= link_to(control_path(hit.ctrl.sort_number)) do %>
+      <h2><small><%= "#{hit.ctrl.sort_number} #{hit.label.upcase}" %></small></h2>
       <% end %>
       <blockquote>
-        <p><em><%= hit.description %></em></p>
+        <p><em><%= hit.prose %></em></p>
       </blockquote>
     </li>
   <% end %>

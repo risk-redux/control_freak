@@ -1,61 +1,49 @@
 module ControlsHelper
-  def control_statement(statement)
-    @number = statement.number
-    @is_odv = statement.is_odv
-    @parsed_number = @number[/([A-Z]{2}-[0-9]{1,2})(([a-z]\.|[0-9]*\.)*|$)/, 3] # Ugh.
-    @level = @number.scan(".").length # Double ugh.
-    @description = statement.description
-    @parsed_description = @is_odv ? parsed_description(@description) : @description
-
-    render("controls/shared/statement", number: @parsed_number, level: @level, description: @description)
+  def parameter_table(parameters)
+    render("controls/shared/parameter_table", parameters: parameters)
   end
 
-  def enhancement_statement(statement)
-    @number = statement.number
-    @is_odv = statement.is_odv
-    @parsed_number = @number[/([A-Z]{2}-[0-9]{1,2}) (\([0-9]*\))((\([a-z]\)|\([0-9]*\))*|$)/, 4] # Ugh.
-    @level = @number.scan("(").length - 1 # Double ugh.
-    @description = statement.description
-    @parsed_description = @is_odv ? parsed_description(@description) : @description
+  def render_prose(part)
+    rendered_prose = "#{part.prepend} "
+    
+    rendered_prose += part.prose.gsub(/{{ ([a-z0-9\_\-\.]*) }}/, '<span class="bg-warning"><strong><em>\1</em></strong></span>' ).html_safe
 
-    render("controls/shared/statement", number: @parsed_number, level: @level, description: @description)
+    return rendered_prose.html_safe
   end
 
-  def parsed_description(description)
-    @parsed_description = description.split("[").join("<mark>[")
-    @parsed_description = @parsed_description.split("]").join("]</mark>")
-    @parsed_description
+  def statement(statement, level)
+    s = ActionView::OutputBuffer.new
+
+    statement.each do |part|
+      part.children.each do |child|
+        s += statement([child], level + 1)
+      end
+
+      unless part.prose.nil?
+        s = render("controls/shared/statement", prose: render_prose(part), level: level) + s
+      end
+
+      return s
+    end
   end
 
-  def baseline_panels(control)
-    @checks = {
-      "Low" => control.is_baseline_impact_low,
-      "Moderate" => control.is_baseline_impact_moderate,
-      "High" => control.is_baseline_impact_high
-    }
+  def references(links)
+    references = []
+    reference_links = links.where(link_type: 'reference')
+    reference_links.each do |r|
+      references += Reference.where(number: r.link_text)
+    end
 
-    render("controls/shared/baseline_panels", checks: @checks)
-  end
-
-  def baseline_labels(control)
-    @checks = {
-      "Low" => control.is_baseline_impact_low,
-      "Moderate" => control.is_baseline_impact_moderate,
-      "High" => control.is_baseline_impact_high
-    }
-
-    render("controls/shared/baseline_labels", checks: @checks)
-  end
-
-  def control_supplement(supplement)
-    render("controls/shared/supplement", supplement: supplement)
-  end
-
-  def related_controls(supplement)
-    render("controls/shared/related_controls", supplement: supplement)
-  end
-
-  def references(references)
     render("controls/shared/references", references: references)
+  end
+
+  def relateds(links)
+    relateds = []
+    related_links = links.where(link_type: 'related')
+    related_links.each do |r|
+      relateds += Control.where(number: r.link_text.downcase)
+    end
+
+    render("controls/shared/relateds", relateds: relateds)
   end
 end

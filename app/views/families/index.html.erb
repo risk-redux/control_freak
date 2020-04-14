@@ -4,27 +4,26 @@
 <div class="row">
   <div class="col-xs-12">
     <h1 class="page-header">Families</h1>
-    <p class="lead">Families are groupings of NIST SP 800-53 security controls.</p>
-    <p>In NIST's words:</p>
-    <blockquote>
+    <blockquote class="blockquote">
       <p>Security controls described in this publication have a well-defined organization and structure. For ease of use in the security control selection and specification process, controls are organized into eighteen families. Each family contains security controls related to the general security topic of the family. A two-character identifier uniquely identifies security control families, for example, PS (Personnel Security). Security controls may involve aspects of policy, oversight, supervision, manual processes, actions by individuals, or automated mechanisms implemented by information systems/devices.</p>
+      <footer class="blockquote-footer"><cite title="Source Title">NIST SP 800-53, Rev 5</footer>
     </blockquote>
     <p>Each of the <%= @family_count %> families comes with a two letter code, which comprises the first part of a control number (i.e., the principal identifiers for controls). Here's a quick guide<span class="hidden-xs hidden-sm">, and some "at-a-glance" stats</span>:</p>
   </div>
 
   <div class="card-deck">
     <% @families.each do |family, index| %>
-    <%= link_to(family_path(family.acronym)) do %>
+    <%= link_to(family_path(family.acronym.upcase)) do %>
     <div class="card">
       <div class="card-header">
-        <%= @control_count[family[:name]] %>
+        <%= family.controls.count %>
       </div>
       <div class="card-body">
         <h2 class="card-title">
-          <abbr title="<%= family[:name] %>"><%= family[:acronym] %></abbr>
+          <abbr title="<%= family[:title] %>"><%= family[:acronym].upcase %></abbr>
         </h2>
         <p class="card-text">
-          <em class="small text-muted"><%= family[:name] %></em>
+          <em class="small text-muted"><%= family[:title] %></em>
         </p>
       </div>
     </div>
