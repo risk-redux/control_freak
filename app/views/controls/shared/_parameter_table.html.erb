@@ -15,7 +15,7 @@
         <% end %>
 
         <% unless p.depends_on.nil? %>
-        (depends on: <%= p.depends_on %>)
+        (depends on: <span class="bg-warning"><strong><em><%= p.depends_on %></em></strong></span>)
         <% end %>
 
         <% unless p.selection.nil? && p.alternatives.nil? %>
