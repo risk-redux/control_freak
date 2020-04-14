@@ -6,7 +6,7 @@
     <%= form_tag(welcome_path, :method => 'get', :id => "big-search") do %>
     <div class="big-search">
       <span class="fa fa-search"></span>
-      <%= text_field_tag(:search, params[:search], :id => "big-search-field", :autocomplete => "off", :maxlength => 35) %>
+      <%= text_field_tag(:search, params[:search], :id => "big-search-field", :autocomplete => "off", :maxlength => 35, :placeholder => "Search for controls (e.g., 'Authenticator Management')...") %>
     </div>
     <br /><%= submit_tag("Search", :name => nil) %>
     <% end %>

@@ -3,10 +3,17 @@ module ControlsHelper
     render("controls/shared/parameter_table", parameters: parameters)
   end
 
+  def render_parameters(prose)
+    template = '<span class="bg-warning"><strong><em>\1</em></strong></span>'
+    prose = prose.gsub(/\\n/, '')
+    
+    return prose.gsub(/{{ ([a-z0-9\_\-\.]*) }}/, template).html_safe
+  end
+
   def render_prose(part)
     rendered_prose = "#{part.prepend} "
     
-    rendered_prose += part.prose.gsub(/{{ ([a-z0-9\_\-\.]*) }}/, '<span class="bg-warning"><strong><em>\1</em></strong></span>' ).html_safe
+    rendered_prose += render_parameters(part.prose)
 
     return rendered_prose.html_safe
   end

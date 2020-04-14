@@ -21,7 +21,7 @@
         <% unless p.selection.nil? && p.alternatives.nil? %>
         <ul>
           <% p.alternatives.gsub(/[\[\]\"]/,'').split(', ').each do |a| %>
-          <li><%= a %></li>
+          <li><%= render_parameters(a) %></li>
           <% end %>
         </ul>
         <% end %>
