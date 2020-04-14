@@ -9,7 +9,7 @@ class ControlsController < ApplicationController
 
     respond_to do |format|
       format.html {}
-      #format.json { render json: @controls.as_json(except: [:id, :created_at, :updated_at]) }
+      format.json { render json: @controls.as_json(except: [:created_at, :updated_at]) }
     end
   end
 
@@ -18,14 +18,14 @@ class ControlsController < ApplicationController
 
     respond_to do |format|
       format.html {}
-      # format.json {
-      #   render json: @control.as_json(except: [:id, :parent_id, :family_id, :created_at, :updated_at], include: [
-      #     statements: { except: [:id, :control_id, :created_at, :updated_at] },
-      #     references: { except: [:id, :control_id, :created_at, :updated_at] },
-      #     supplement: { except: [:id, :control_id, :created_at, :updated_at] },
-      #     children: { except: [:id, :parent_id, :family_id, :control_id, :created_at, :updated_at] }
-      #   ])
-      # }
+      format.json {
+        render json: @control.as_json(except: [:created_at, :updated_at], include: [
+          parameters: { except: [:created_at, :updated_at] },
+          parts: { except: [:created_at, :updated_at] },
+          links: { except: [:created_at, :updated_at] },
+          children: { except: [:created_at, :updated_at] }
+        ])
+      }
     end
   end
 end

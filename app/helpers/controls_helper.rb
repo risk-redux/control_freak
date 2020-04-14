@@ -11,6 +11,18 @@ module ControlsHelper
     return rendered_prose.html_safe
   end
 
+  def withdrawn_content(links)
+    link_types = links.distinct.pluck(:link_type)
+
+    if link_types.include?('incorporated-into')
+      render("controls/shared/withdrawn_content", prefix: "Incorporated into", links: links)
+    elsif link_types.include?('moved-to')
+      render("controls/shared/withdrawn_content", prefix: "Moved to", links: links)
+    else
+      render("controls/shared/withdrawn_content", prefix: "Check out", links: links)
+    end
+  end
+
   def statement(statement, level)
     s = ActionView::OutputBuffer.new
 
