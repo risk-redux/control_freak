@@ -24,8 +24,8 @@
   <% @control.parts.where(label: 'guidance', parent_id: nil).each do |g| %>
   <% unless g.prose.nil? %>
   <% g.prose.split("\n").each do |paragraph| %>
-  <% end %>
   <p><%= paragraph %></p>
+  <% end %>
   <% end %>
   <% end %>
   <% end %>
