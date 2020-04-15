@@ -22,7 +22,9 @@
   <% unless @control.parts.where(label: 'guidance', parent_id: nil).empty? %>
   <h2>Guidance</h2>
   <% @control.parts.where(label: 'guidance', parent_id: nil).each do |g| %>
+  <% unless g.prose.nil? %>
   <% g.prose.split("\n").each do |paragraph| %>
+  <% end %>
   <p><%= paragraph %></p>
   <% end %>
   <% end %>
@@ -62,7 +64,9 @@
   <% unless child.parts.where(label: 'guidance').empty? %>
   <h2>Guidance</h2>
   <% child.parts.where(label: 'guidance').each do |g| %>
+  <% unless g.prose.nil? %>
   <p><%= g.prose %></p>
+  <% end %>
   <% end %>
   <% end %>
 
