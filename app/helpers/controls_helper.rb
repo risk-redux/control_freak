@@ -4,7 +4,7 @@ module ControlsHelper
   end
 
   def render_parameters(prose)
-    template = '<span class="bg-warning"><strong><em>\1</em></strong></span>'
+    template = '<span class="parameter bg-warning">\1</span>'
     prose = prose.gsub(/\\n/, '')
     
     return prose.gsub(/{{ ([a-z0-9\_\-\.]*) }}/, template).html_safe

@@ -19,12 +19,17 @@ p.statement_level_4 {
 }
 
 small span {
-  font-family: "Share Tech Mono";
+  font-family: 'Fira Mono', monospace;
   padding: 0 0 0 0;
   margin: 0 0 0 0;
 }
 
+span.bg-warning {
+  font-weight: 800;
+  padding: 0 5px 0 5px;
+}
+
 .control-body {
-  font-family: "Share Tech Mono";
+  font-family: 'Fira Mono', monospace;
   padding: 2.00em 3.00em 2.00em 3.00em;
 }

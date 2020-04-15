@@ -3,20 +3,27 @@ tr[data-link]:hover {
 }
 
 tr.incorporated-into {
-  font-style: italic;
+  font-family: 'Fira Mono', monospace;
+  // font-style: italic;
+  font-weight: 400;
   color: #bbbbbb;
 }
 
 tr.moved-to {
-  font-style: italic;
+  font-family: 'Fira Mono', monospace;
+  // font-style: italic;
+  font-weight: 400;
   color: #bbbbbb;
 }
 
 
 tr.enhancement {
-  font-style: italic;
+  font-family: 'Fira Mono', monospace;
+  // font-style: italic;
+  font-weight: 500;
 }
 
 tr.control {
-  font-weight: bold;
+  font-family: 'Fira Mono', monospace;
+  font-weight: 700;
 }
