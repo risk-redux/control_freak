@@ -2,38 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.card-title {
-  font-size: 4vw;
-  text-align: center;
-  padding-bottom: 0.00em;
-  margin-bottom: 0.00em;
-}
-
-.card-title abbr {
+a {
   text-decoration: none;
   cursor: pointer;
 }
 
-.card-header {
-  text-align: right;
-  border-bottom: none;
-  background-color: #ffffff;
-}
-
-.card-text {
-  font-size: 0.75em;
-  text-align: center;
-}
-
-.card {
-  height: 15vw;
-  width: 15vw;
-}
-
-a {
-  padding-bottom: 1.50em;
-}
-
-a:hover {
+abbr, abbr[title] {
   text-decoration: none;
+  -webkit-text-decoration: none;
 }

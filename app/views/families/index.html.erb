@@ -10,25 +10,26 @@
     </blockquote>
     <p>Each of the <%= @family_count %> families comes with a two letter code, which comprises the first part of a control number (i.e., the principal identifiers for controls). Here's a quick guide<span class="hidden-xs hidden-sm">, and some "at-a-glance" stats</span>:</p>
   </div>
+</div>
 
-  <div class="card-deck">
-    <% @families.each do |family, index| %>
-    <%= link_to(family_path(family.acronym.upcase)) do %>
-    <div class="card">
-      <div class="card-header">
-        <%= family.controls.count %>
-      </div>
+<div class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-4 row-cols-lg-5">
+  <% @families.each do |family, index| %>
+  <div class="col mb-4">
+    <div class="card h-100">
       <div class="card-body">
-        <h2 class="card-title">
+        <%= link_to(family_path(family.acronym.upcase), { class: 'stretched-link'}) do %><% end %>
+        <p class="card-text text-right text-danger">
+          <strong><%= family.controls.count %></strong>
+        </p>
+        <h2 class="card-title display-3 text-center">
           <abbr title="<%= family[:title] %>"><%= family[:acronym].upcase %></abbr>
         </h2>
-        <p class="card-text">
-          <em class="small text-muted"><%= family[:title] %></em>
+        <p class="card-text text-center d-none d-md-block">
+          <small class="text-muted"><em><%= family.title %></em></small>
         </p>
       </div>
     </div>
-    <% end %>
-    <% end %>
   </div>
+  <% end %>
 </div>
 <% end %>
