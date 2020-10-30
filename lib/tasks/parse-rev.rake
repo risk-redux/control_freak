@@ -201,8 +201,12 @@ namespace :rev_content do
       begin
         # Blech! NIIIST!
         baseline['profile']['imports'][0]['include']['id-selectors'].each do |control|
-          puts "#{control['control-id']} #{is_type}"
-          Control.find_by(number: control['control-id']).update(is_type => true)
+          begin
+            puts "#{control['control-id']} #{is_type}"
+            Control.find_by(number: control['control-id']).update(is_type => true)
+          rescue Exception => exception
+            puts "#{control['control-id']} not found!"
+          end
         end
 
         puts "#{is_type} baseline loaded!"
