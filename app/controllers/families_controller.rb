@@ -18,7 +18,7 @@ class FamiliesController < ApplicationController
 
   def show
     @family = Family.where(acronym: params[:acronym].downcase).first
-    @controls = @family.controls.all
+    @controls = @family.controls.order(:sort_number)
 
     respond_to do |format|
       format.html {}
