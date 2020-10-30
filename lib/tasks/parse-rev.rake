@@ -127,6 +127,10 @@ namespace :rev_content do
         c[:parent_id] = parent_id
         c[:number] = control['id']
         c[:title] = control['title']
+        c[:is_low] = false
+        c[:is_moderate] = false
+        c[:is_high] = false
+        c[:is_privacy] = false
 
         unless control['properties'].nil?
           control['properties'].each do |property|
@@ -193,38 +197,15 @@ namespace :rev_content do
       end
     end
 
-    def parse_baselines()
+    def parse_baseline(baseline, is_type)
       begin
-        low_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_LOW-baseline-resolved-profile_catalog.json').read
-        moderate_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_MODERATE-baseline-resolved-profile_catalog.json').read
-        high_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_HIGH-baseline-resolved-profile_catalog.json').read
-        privacy_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_PRIVACY-baseline-resolved-profile_catalog.json').read
-
-        low_baseline['catalog']['groups'].each do |group|
-          group['controls'].each do |control|
-            Control.find_by(number: control['id']).update(is_low: true)
-          end
+        # Blech! NIIIST!
+        baseline['profile']['imports'][0]['include']['id-selectors'].each do |control|
+          puts "#{control['control-id']} #{is_type}"
+          Control.find_by(number: control['control-id']).update(is_type => true)
         end
 
-        moderate_baseline['catalog']['groups'].each do |group|
-          group['controls'].each do |control|
-            Control.find_by(number: control['id']).update(is_moderate: true)
-          end
-        end
-        
-        high_baseline['catalog']['groups'].each do |group|
-          group['controls'].each do |control|
-            Control.find_by(number: control['id']).update(is_high: true)
-          end
-        end
-        
-        privacy_baseline['catalog']['groups'].each do |group|
-          group['controls'].each do |control|
-            Control.find_by(number: control['id']).update(is_privacy: true)
-          end
-        end
-
-        puts "Baselines loaded!"
+        puts "#{is_type} baseline loaded!"
       rescue Exception => exception
         puts exception.message
       end
@@ -245,7 +226,18 @@ namespace :rev_content do
     parse_families(json)
     parse_references(json)
     parse_controls(json)
-    parse_baselines()
+
+    low_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_LOW-baseline_profile.json').read
+    parse_baseline(low_baseline, :is_low)
+
+    moderate_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_MODERATE-baseline_profile.json').read
+    parse_baseline(moderate_baseline, :is_moderate)
+
+    high_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_HIGH-baseline_profile.json').read
+    parse_baseline(high_baseline, :is_high)
+
+    privacy_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_PRIVACY-baseline_profile.json').read
+    parse_baseline(privacy_baseline, :is_privacy)
 
     # control_seeds()
   end
