@@ -69,4 +69,8 @@ module ControlsHelper
   def baseline_pills(control)
     render("controls/shared/baseline_pills", control: control)
   end
+
+  def baseline_badges(control)
+    render("controls/shared/baseline_badges", control: control)
+  end
 end
