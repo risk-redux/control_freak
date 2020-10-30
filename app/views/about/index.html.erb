@@ -3,8 +3,12 @@
 <% content_for :main do %>
 <div class="row">
   <div class="col-12">
-    <h1 class="page-header">About <%= "#{Rails.application.config.app_name}" %></h1>
-    <p class="lead">A bit about what we're doing here. `<%= "#{Rails.application.config.app_name}" %>` is part of the Risk-Redux project, which is an endeavor to provide some practical tools for use of NIST frameworks. Essentially, we were tired of <kbd>&#8984; + F</kbd>-ing through PDFs so we started making some web apps.</p>
+    <h1 class="page-header">Welcome to `<%= "#{Rails.application.config.app_name}" %>`</h1>
+    <p class="lead">`control_freak` is a part of the <a href="https://risk-redux.io">Risk-Redux</a> project, which seeks to turn NIST frameworks into practical web applications.</p>
+    <p>The `rev-5` branch represents content from <a href="https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final">NIST SP 800-53, Rev 5</a>.</p>
+    <p>The schema for `rev-5` is significantly different from previous versions and merging them all would be messy. Instead, Risk-Redux will be deploying two versions of `control_freak` in parallel until such time that people stop using older versions. Specifically, we'll host `rev-5` at `<a href="https://controlfreak5.risk-redux.io">control_freak5</a>`.</p>
+      
+    <h2>Contributing</h2>
     <p>To learn more about our work, check us out on <a href="http://github.com/risk-redux">GitHub</a>!</p>
 </div>
 <% end %>
