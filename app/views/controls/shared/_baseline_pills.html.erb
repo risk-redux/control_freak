@@ -1,0 +1,14 @@
+<ul class="list-inline">
+  <li class="list-inline-item">
+    <%= render('controls/shared/baseline_pill', control:  control.is_low, level: 'Low') %>
+  </li>
+  <li class="list-inline-item">
+    <%= render('controls/shared/baseline_pill', control:  control.is_moderate, level: 'Moderate') %>
+  </li>
+  <li class="list-inline-item">
+    <%= render('controls/shared/baseline_pill', control:  control.is_high, level: 'High') %>
+  </li>
+  <li class="list-inline-item">
+    <%= render('controls/shared/baseline_pill', control:  control.is_privacy, level: 'Privacy') %>
+  </li>
+</ul>

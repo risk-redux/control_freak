@@ -4,7 +4,7 @@
     <%= control[:sort_number].upcase %>
   </td>
   <td><%= control[:title] %></td>
-  <td colspan="3">
+  <td colspan="4">
     Incorporated into
     <%= control.links.where(link_type: 'incorporated-into').pluck(:link_text).to_sentence %>.
   </td>
@@ -15,7 +15,7 @@
     <%= control[:sort_number].upcase %>
   </td>
   <td><%= control[:title] %></td>
-  <td colspan="3">
+  <td colspan="4">
     Moved to
     <%= control.links.where(link_type: 'moved-to').pluck(:link_text).to_sentence %>.
   </td>
@@ -28,8 +28,33 @@
     <% end %>
   </td>
   <td><%= control[:title] %></td>
-  <td><%= control.parameters.count %></td>
-  <td><%= control.links.where(link_type: 'reference').count %></td>
-  <td><%= control.links.where(link_type: 'related').count %></td>
+  <td class="text-center">
+    <% if control.is_privacy %>
+      <i class="fa fa-check-circle text-success" aria-hidden="true"></i>
+    <% else %>
+      <i class="fa fa-times-circle text-muted" aria-hidden="true"></i>
+    <% end %>
+  </td>
+  <td class="text-center">
+    <% if control.is_low %>
+      <i class="fa fa-check-circle text-success" aria-hidden="true"></i>
+    <% else %>
+      <i class="fa fa-times-circle text-muted" aria-hidden="true"></i>
+    <% end %>
+  </td>
+  <td class="text-center">
+    <% if control.is_moderate %>
+      <i class="fa fa-check-circle text-success" aria-hidden="true"></i>
+    <% else %>
+      <i class="fa fa-times-circle text-muted" aria-hidden="true"></i>
+    <% end %>
+  </td>
+  <td class="text-center">
+    <% if control.is_high %>
+      <i class="fa fa-check-circle text-success" aria-hidden="true"></i>
+    <% else %>
+      <i class="fa fa-times-circle text-muted" aria-hidden="true"></i>
+    <% end %>
+  </td>
 </tr>
 <% end %>

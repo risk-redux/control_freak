@@ -19,6 +19,9 @@
   <% end %>
   <% end %>
 
+  <h2>Baselines</h2>
+  <%= baseline_pills(@control) %>
+
   <% unless @control.parts.where(label: 'guidance', parent_id: nil).empty? %>
   <h2>Guidance</h2>
   <% @control.parts.where(label: 'guidance', parent_id: nil).each do |g| %>

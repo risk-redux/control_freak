@@ -193,10 +193,60 @@ namespace :rev_content do
       end
     end
 
+    def parse_baselines()
+      begin
+        low_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_LOW-baseline-resolved-profile_catalog.json').read
+        moderate_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_MODERATE-baseline-resolved-profile_catalog.json').read
+        high_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_HIGH-baseline-resolved-profile_catalog.json').read
+        privacy_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_PRIVACY-baseline-resolved-profile_catalog.json').read
+
+        low_baseline['catalog']['groups'].each do |group|
+          group['controls'].each do |control|
+            Control.find_by(number: control['id']).update(is_low: true)
+          end
+        end
+
+        moderate_baseline['catalog']['groups'].each do |group|
+          group['controls'].each do |control|
+            Control.find_by(number: control['id']).update(is_moderate: true)
+          end
+        end
+        
+        high_baseline['catalog']['groups'].each do |group|
+          group['controls'].each do |control|
+            Control.find_by(number: control['id']).update(is_high: true)
+          end
+        end
+        
+        privacy_baseline['catalog']['groups'].each do |group|
+          group['controls'].each do |control|
+            Control.find_by(number: control['id']).update(is_privacy: true)
+          end
+        end
+
+        puts "Baselines loaded!"
+      rescue Exception => exception
+        puts exception.message
+      end
+    end
+
+    def control_seeds()
+      Control.all.each do |control|
+        excluded_keys = ['created_at', 'updated_at', 'id'] 
+        serialized = control
+          .serializable_hash
+          .delete_if{|key,value| excluded_keys.include?(key)} 
+        puts "Control.create(#{serialized})\n\n"
+      end
+    end
+
     # Driver
-    json = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_catalog.json').read
+    json = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FINAL_catalog.json').read
     parse_families(json)
     parse_references(json)
     parse_controls(json)
+    parse_baselines()
+
+    # control_seeds()
   end
 end

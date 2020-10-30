@@ -31,6 +31,11 @@ ActiveRecord::Schema.define(version: 2020_11_23_213538) do
     t.text "status", limit: 65535
     t.text "label", limit: 65535
 
+    t.boolean "is_low"
+    t.boolean "is_moderate"
+    t.boolean "is_high"
+    t.boolean "is_privacy"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
