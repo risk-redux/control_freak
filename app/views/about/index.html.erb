@@ -2,27 +2,13 @@
 
 <% content_for :main do %>
 <div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <h1 class="page-header">About <%= "#{Rails.application.config.app_name}" %></h1>
-    <p class="lead">A bit about what I'm doing here.</p>
-    <p class="lead">This app is populated with information from <a href="http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf">NIST SP 800-53 Revision 4, <em>Security and Privacy Controls for Federal Information Systems and Organizations</em></a>.</p>
-    <p>However, the plan is to keep it updated with the latest information once I automate the process.</p>
-    <p> According to NIST, "NIST Special Publication 800-53, Revision 4, represents the most comprehensive update to the security controls catalog since its inception in 2005". For real. It's in the foreward. But since Revision 5 is just around the corner, developing an effective way to keep this system up-to-date is a top priority.</p>
-    </blockquote>
-    <p>And here's a little change for Jared.</p>
-    <p>I like the idea of control_freak, but if you would rather get right at the raw data it sits over top of, you can check out my <a href="https://github.com/egyptiankarim/NIST-SP-800-53-Toolkit">NIST-SP-800-53-Toolkit</a> repo, or just go directly to <a href="http://csrc.nist.gov/publications/PubsSPs.html" title="NIST Computer Security Publications - NIST Special Publications (SPs)">NIST</a> and play with the stuff they have. As for control_freak itself, it's broken into three major areas:</p>
-  </div>
-  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-    <%= render "about/shared/family_panel" %>
-  </div>
-  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-    <%= render "about/shared/control_panel" %>
-  </div>
-  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-    <%= render "about/shared/criteria_panel" %>
-  </div>
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <p>You can think of each of the areas as a level of abstraction&hellip; Because that's what they are. And you can navigate and browse through each one to get to the juicy bits that you want. Or just hit the main page and text-search away.</p>
-  </div>
+  <div class="col-12">
+    <h1 class="page-header">Welcome to `<%= "#{Rails.application.config.app_name}" %>`</h1>
+    <p class="lead">`control_freak` is a part of the <a href="https://risk-redux.io">Risk-Redux</a> project, which seeks to turn NIST frameworks into practical web applications.</p>
+    <p>The `rev-5` branch represents content from <a href="https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final">NIST SP 800-53, Rev 5</a>.</p>
+    <p>The schema for `rev-5` is significantly different from previous versions and merging them all would be messy. Instead, Risk-Redux will be deploying two versions of `control_freak` in parallel until such time that people stop using older versions. Specifically, we'll host `rev-5` at `<a href="https://controlfreak5.risk-redux.io">control_freak5</a>`.</p>
+      
+    <h2>Contributing</h2>
+    <p>To learn more about our work, check us out on <a href="http://github.com/risk-redux">GitHub</a>!</p>
 </div>
 <% end %>
