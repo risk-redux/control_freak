@@ -29,13 +29,6 @@
   </td>
   <td><%= control[:title] %></td>
   <td class="text-center">
-    <% if control.is_privacy %>
-      <i class="fa fa-check-circle text-success" aria-hidden="true"></i>
-    <% else %>
-      <i class="fa fa-times-circle text-muted" aria-hidden="true"></i>
-    <% end %>
-  </td>
-  <td class="text-center">
     <% if control.is_low %>
       <i class="fa fa-check-circle text-success" aria-hidden="true"></i>
     <% else %>
@@ -51,6 +44,13 @@
   </td>
   <td class="text-center">
     <% if control.is_high %>
+      <i class="fa fa-check-circle text-success" aria-hidden="true"></i>
+    <% else %>
+      <i class="fa fa-times-circle text-muted" aria-hidden="true"></i>
+    <% end %>
+  </td>
+  <td class="text-center">
+    <% if control.is_privacy %>
       <i class="fa fa-check-circle text-success" aria-hidden="true"></i>
     <% else %>
       <i class="fa fa-times-circle text-muted" aria-hidden="true"></i>
