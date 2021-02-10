@@ -226,7 +226,7 @@ namespace :rev_content do
     end
 
     # Driver
-    json = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FINAL_catalog.json').read
+    json = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/OSCAL/01c0aa9b45667b25e8105160119da011471c77cb/content/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_catalog.json').read
     parse_families(json)
     parse_references(json)
     parse_controls(json)
