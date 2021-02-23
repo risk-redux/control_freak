@@ -73,4 +73,9 @@ module ControlsHelper
   def baseline_badges(control)
     render("controls/shared/baseline_badges", control: control)
   end
+
+  def selection(selection)
+    # Ugh!
+    return eval(selection)["how-many"]
+  end
 end

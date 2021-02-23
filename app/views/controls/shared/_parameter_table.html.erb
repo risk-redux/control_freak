@@ -18,7 +18,10 @@
         (depends on: <span class="bg-warning"><strong><em><%= p.depends_on %></em></strong></span>)
         <% end %>
 
-        <% unless p.selection.nil? && p.alternatives.nil? %>
+        <% unless p.selection.nil? %>
+        <p>Selection (<em><%= selection(p.selection) %></em>):</p>
+        <% end %>
+        <% unless p.alternatives.nil? %>
         <ul>
           <% p.alternatives.gsub(/[\[\]\"]/,'').split(', ').each do |a| %>
           <li><%= render_parameters(a) %></li>
