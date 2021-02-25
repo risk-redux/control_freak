@@ -15,7 +15,7 @@ class Control < ApplicationRecord
       
       regexp_search = Regexp.new(search, Regexp::IGNORECASE)
 
-      @hits_hash["title_hits"] = controls.select{ |row| regexp_search.match(row.title) || regexp_search.match(row.number) }
+      @hits_hash["title_hits"] = controls.select{ |row| regexp_search.match(row.title) || regexp_search.match(row.number) || regexp_search.match(row.sort_number) }
       @hits_hash["prose_hits"] = parts.select{ |row| regexp_search.match(row.prose) }
     else
       @hits_hash["title_hits"] = []
