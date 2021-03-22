@@ -45,7 +45,7 @@
 
   <hr/>
 
-  <% @control.children.each do |child| %>
+  <% @control.children.order("sort_number ASC").each do |child| %>
   <% unless child.status == 'Withdrawn' %>
   <h1>
     <%= child.sort_number.upcase %>
