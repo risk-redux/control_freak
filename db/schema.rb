@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_213538) do
     t.text "number", limit: 65535
     t.text "citation", limit: 65535
     t.text "href", limit: 65535
+    t.text "uuid", limit: 65535
 
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

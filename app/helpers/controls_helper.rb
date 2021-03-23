@@ -50,7 +50,9 @@ module ControlsHelper
     references = []
     reference_links = links.where(link_type: 'reference')
     reference_links.each do |r|
-      references += Reference.where(number: r.link_text)
+      puts "\n\n\n\n\n\n",r.href.gsub('#',''),"\n\n\n\n\n\n\n\n\n\n"
+      # Ugh! NIIIST! Moons of Nibia!
+      references += Reference.where(uuid: r.href.gsub('#',''))
     end
 
     render("controls/shared/references", references: references)
@@ -60,7 +62,8 @@ module ControlsHelper
     relateds = []
     related_links = links.where(link_type: 'related')
     related_links.each do |r|
-      relateds += Control.where(number: r.link_text.downcase)
+      # Ugh! NIIIIIIST! Antares Malestrom!
+      relateds += Control.where(number: r.href.gsub('#','')).order("sort_number ASC")
     end
 
     render("controls/shared/relateds", relateds: relateds)
@@ -75,7 +78,7 @@ module ControlsHelper
   end
 
   def selection(selection)
-    # Ugh!
+    # Ugh! NIIIIIIIIIST! Perdition's flames!
     return eval(selection)["how-many"]
   end
 end

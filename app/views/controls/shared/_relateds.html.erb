@@ -2,8 +2,8 @@
 <ul class="list-inline">
   <% relateds.each do |r| %>
   <li class="list-inline-item">
-    <%= link_to(control_path(r.sort_number.upcase), title: r.title) do %>
-    <span class="badge badge-pill badge-primary"><%= r.sort_number.upcase %></span>
+    <%= link_to(control_path(r.label), title: r.title) do %>
+    <span class="badge badge-pill badge-primary badge-fixed"><%= r.label.ljust(5) %></span>
     <% end %>
   </li>
   <% end %>

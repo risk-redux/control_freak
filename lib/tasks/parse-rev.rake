@@ -2,6 +2,8 @@ namespace :rev_content do
   desc 'Parse Rev content XML.'
   task :parse => :environment do
     def parse_families(json)
+      puts "\n\n\nParsing Families"
+      puts "********************************************************************************"
       begin
         Family.destroy_all
         
@@ -20,9 +22,13 @@ namespace :rev_content do
       rescue Exception => exception
         puts exception.message
       end
+      puts "********************************************************************************"
+      puts "\n\n\n"
     end
 
     def parse_references(json)
+      puts "\n\n\nParsing References"
+      puts "********************************************************************************"
       begin
         Reference.destroy_all
     
@@ -33,6 +39,10 @@ namespace :rev_content do
             r[:number] = reference['title']
           else
             r[:number] = reference['id']
+          end
+          
+          unless reference['uuid'].nil?
+            r[:uuid] = reference['uuid']
           end
 
           unless reference['citation'].nil?
@@ -45,14 +55,18 @@ namespace :rev_content do
 
           r.save
 
-          puts "Created reference: #{r[:number]}"
+          puts "\t\t\tCreated reference: #{r[:number]}"
         end
       rescue Exception => exception
         puts exception.message
       end
+      puts "********************************************************************************"
+      puts "\n\n\n"
     end
 
     def parse_parameters(ctrl, parameters)
+      puts "\n\n\n\t\t\tParsing Parameters"
+      puts "\t\t\t********************************************************************************"
       begin
         parameters.each do |parameter|
           p = Parameter.new
@@ -68,33 +82,42 @@ namespace :rev_content do
 
           p.save
 
-          puts "Created parameter: #{p[:number]}"
+          puts "\t\t\tCreated parameter: #{p[:number]}"
         end
       rescue Exception => exception
         puts exception.message
       end
+      puts "\t\t\t********************************************************************************"
+      puts "\n\n\n"
     end
     
     def parse_links(ctrl, links)
+      puts "\n\n\n\t\t\tParsing Links"
+      puts "\t\t\t********************************************************************************"
       begin
         links.each do |link|
           l = Link.new
 
           l[:control_id] = ctrl[:id]
-          l[:href] = link['href']
           l[:link_type] = link['rel'] # ["reference", "related", "incorporated-into", "moved-to"]
-          l[:link_text] = link['text']
+
+          l[:href] = link['href']
+          l[:link_text] = link['href']
 
           l.save
 
-          puts "Created link: #{l[:link_text]}"
+          puts "\t\t\tCreated link: #{l[:link_text]}"
         end
       rescue Exception => exception
         puts exception.message
       end
+      puts "\t\t\t********************************************************************************"
+      puts "\n\n\n"
     end
 
     def parse_part(control_id, parent_id, part)
+      puts "\n\n\n\t\t\tParsing Parts"
+      puts "\t\t\t********************************************************************************"
       begin
         p = Part.create
 
@@ -107,7 +130,7 @@ namespace :rev_content do
 
         p.save
         
-        puts "Created part: #{p[:number]}"
+        puts "\t\t\tCreated part: #{p[:number]}"
 
         unless part["parts"].nil?
           part["parts"].each do |sub_part|
@@ -117,9 +140,13 @@ namespace :rev_content do
       rescue Exception => exception
         puts exception.message
       end
+      puts "\t\t\t********************************************************************************"
+      puts "\n\n\n"
     end
 
     def parse_control(family_id, parent_id, control)
+      puts "\n\n\nParsing Control"
+      puts "********************************************************************************"
       begin
         c = Control.create
     
@@ -132,8 +159,8 @@ namespace :rev_content do
         c[:is_high] = false
         c[:is_privacy] = false
 
-        unless control['properties'].nil?
-          control['properties'].each do |property|
+        unless control['props'].nil?
+          control['props'].each do |property|
             case property['name']
             when 'label'
               c[:label] = property['value']
@@ -164,6 +191,8 @@ namespace :rev_content do
         end
 
         puts "Created control: #{c[:number]}"
+        puts "********************************************************************************"
+        puts "\n\n\n"
         return c[:id]
       rescue Exception => exception
         puts exception.message
@@ -198,9 +227,11 @@ namespace :rev_content do
     end
 
     def parse_baseline(baseline, is_type)
+      puts "\n\n\nParsing baseline"
+      puts "********************************************************************************"
       begin
         # Blech! NIIIST!
-        baseline['profile']['imports'][0]['include']['id-selectors'].each do |control|
+        baseline['profile']['imports'][0]['include']['calls'].each do |control|
           begin
             puts "#{control['control-id']} #{is_type}"
             Control.find_by(number: control['control-id']).update(is_type => true)
@@ -213,6 +244,8 @@ namespace :rev_content do
       rescue Exception => exception
         puts exception.message
       end
+      puts "********************************************************************************"
+      puts "\n\n\n"
     end
 
     def control_seeds()
@@ -226,21 +259,21 @@ namespace :rev_content do
     end
 
     # Driver
-    json = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/OSCAL/01c0aa9b45667b25e8105160119da011471c77cb/content/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_catalog.json').read
+    json = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json').read
     parse_families(json)
     parse_references(json)
     parse_controls(json)
 
-    low_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_LOW-baseline_profile.json').read
+    low_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_LOW-baseline_profile.json').read
     parse_baseline(low_baseline, :is_low)
 
-    moderate_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_MODERATE-baseline_profile.json').read
+    moderate_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_MODERATE-baseline_profile.json').read
     parse_baseline(moderate_baseline, :is_moderate)
 
-    high_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_HIGH-baseline_profile.json').read
+    high_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_HIGH-baseline_profile.json').read
     parse_baseline(high_baseline, :is_high)
 
-    privacy_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/OSCAL/master/content/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5-FPD_PRIVACY-baseline_profile.json').read
+    privacy_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_PRIVACY-baseline_profile.json').read
     parse_baseline(privacy_baseline, :is_privacy)
 
     # control_seeds()

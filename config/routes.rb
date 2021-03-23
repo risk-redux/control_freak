@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'families/:acronym', to: 'families#show', as: :family
 
   get 'controls', to: 'controls#index', as: :controls
-  get 'controls/:sort_number', to: 'controls#show', as: :control
+  get 'controls/:label', to: 'controls#show', as: :control
 
   get 'statements', to: 'statements#index', as: :statements
 end

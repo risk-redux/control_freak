@@ -1,9 +1,9 @@
-<%- view_title "Controls | #{@control.number.upcase} - #{@control.title}" %>
+<%- view_title "Controls | #{@control.label} - #{@control.title}" %>
 
 <% content_for :main do %>
 
   <h1 class="page-header">
-    <%= @control.sort_number.upcase %>
+    <%= @control.label %>
     <small>
       <%= @control.title %>
     </small>
@@ -46,9 +46,9 @@
   <hr/>
 
   <% @control.children.order("sort_number ASC").each do |child| %>
-  <% unless child.status == 'Withdrawn' %>
+  <% unless child.status == 'withdrawn' %>
   <h1>
-    <%= child.sort_number.upcase %>
+    <%= child.label %>
     <small>
       <%= child.title %><br/>
       <%= baseline_badges(child) %>
@@ -83,9 +83,10 @@
   <h2>Related controls <span class="badge badge-info"><%= child.links.where(link_type: 'related').count %></span></h2>
   <%= relateds(child.links.where(link_type: 'related')) %>
   <% end %>
+
   <% else %>
   <h1 class="text-muted">
-    <%= child.sort_number.upcase %>
+    <%= child.label %>
     <small>
       <%= child.title %>
     </small>

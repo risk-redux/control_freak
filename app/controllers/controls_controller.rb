@@ -14,7 +14,7 @@ class ControlsController < ApplicationController
   end
 
   def show
-    @control = Control.where(sort_number: params[:sort_number]).first
+    @control = Control.where(label: params[:label]).first
 
     respond_to do |format|
       format.html {}

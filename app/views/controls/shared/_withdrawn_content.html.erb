@@ -1,1 +1,1 @@
-<p><%= prefix %> <%= links.pluck(:link_text).to_sentence %>.</p>
+<p><%= prefix %> <%= links.pluck(:link_text).to_sentence.gsub('#','').upcase %>.</p>

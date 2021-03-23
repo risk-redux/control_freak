@@ -4,8 +4,8 @@
 <ul class='list-unstyled'>
   <% @hits['title_hits'].each do |hit| %>
     <% unless hit.sort_number == 'Withdrawn' %>
-    <%= link_to(control_path(hit.sort_number)) do %>
-      <li><h2><%= hit.sort_number %> <small><%= hit.title %></small></h2></li>
+    <%= link_to(control_path(hit.label)) do %>
+      <li><h2><%= hit.label %> <small><%= hit.title %></small></h2></li>
     <% end %>
     <% end %>
   <% end %>
@@ -13,8 +13,8 @@
 <ul class='list-unstyled'>
   <% @hits['prose_hits'].each do |hit| %>
     <li>
-      <%= link_to(control_path(hit.ctrl.sort_number)) do %>
-      <h2><small><%= "#{hit.ctrl.sort_number} #{hit.label.upcase}" %></small></h2>
+      <%= link_to(control_path(hit.ctrl.label)) do %>
+      <h2><small><%= "#{hit.ctrl.label} #{hit.label.upcase}" %></small></h2>
       <% end %>
       <blockquote>
         <p><em><%= hit.prose %></em></p>
