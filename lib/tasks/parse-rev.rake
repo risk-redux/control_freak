@@ -77,7 +77,8 @@ namespace :rev_content do
           p[:selection] = parameter['select']
           p[:depends_on] = parameter['depends-on']
           unless parameter['select'].nil?
-            p[:alternatives] = parameter['select']['alternatives']
+            p[:how_many] = parameter['select']['how-many'] || 'one'
+            p[:choices] = parameter['select']['choice']
           end
 
           p.save
@@ -176,8 +177,8 @@ namespace :rev_content do
 
         c.save
 
-        unless control['parameters'].nil?
-          parse_parameters(c, control['parameters'])
+        unless control['params'].nil?
+          parse_parameters(c, control['params'])
         end
 
         unless control['links'].nil?

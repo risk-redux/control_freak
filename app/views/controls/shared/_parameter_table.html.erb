@@ -19,11 +19,11 @@
         <% end %>
 
         <% unless p.selection.nil? %>
-        <p>Selection (<em><%= selection(p.selection) %></em>):</p>
+        <p>Selection (<em><%= (p.how_many) %></em>):</p>
         <% end %>
-        <% unless p.alternatives.nil? %>
+        <% unless p.choices.nil? %>
         <ul>
-          <% p.alternatives.gsub(/[\[\]\"]/,'').split(', ').each do |a| %>
+          <% p.choices.gsub(/[\[\]\"]/,'').split(', ').each do |a| %>
           <li><%= render_parameters(a) %></li>
           <% end %>
         </ul>

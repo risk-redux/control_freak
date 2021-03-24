@@ -46,7 +46,8 @@ ActiveRecord::Schema.define(version: 2020_11_23_213538) do
     t.text "number", limit: 65535
     t.text "label", limit: 65535
     t.text "selection", limit: 65535
-    t.text "alternatives", limit: 65535
+    t.text "how_many", limit: 65535
+    t.text "choices", limit: 65535
     t.text "depends_on", limit: 65535
 
     t.datetime "created_at", null: false
