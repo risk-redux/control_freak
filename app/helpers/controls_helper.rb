@@ -5,7 +5,7 @@ module ControlsHelper
 
   def render_hyperlinks(prose)
     template = '<a href="\1">\1</a>'
-    pattern = /\[([A-Z]{2}-[0-9]{1,2})\]\(#([a-z]{2}-[0-9]{1,2})\)/
+    pattern = /\[([A-Z]{2}-[0-9]{1,2}(\([0-9]{1,2}\)){0,1})\]\(#([a-z]{2}-[0-9]{1,2}(\.[0-9]{1,2}){0,1})\)/
 
     puts "\n\n\n\n\n\n\n\n\n", prose.gsub(pattern, template).html_safe, "\n\n\n\n\n\n\n\n\n"
     return prose.gsub(pattern, template).html_safe
