@@ -3,11 +3,21 @@ module ControlsHelper
     render("controls/shared/parameter_table", parameters: parameters)
   end
 
+  def render_hyperlinks(prose)
+    template = '<a href="\1">\1</a>'
+    pattern = /\[([A-Z]{2}-[0-9]{1,2})\]\(#([a-z]{2}-[0-9]{1,2})\)/
+
+    puts "\n\n\n\n\n\n\n\n\n", prose.gsub(pattern, template).html_safe, "\n\n\n\n\n\n\n\n\n"
+    return prose.gsub(pattern, template).html_safe
+  end
+
   def render_parameters(prose)
     template = '<span class="parameter bg-warning">\1</span>'
+    pattern = /{{ ([a-z0-9\_\-\.]*) }}/
+    
     prose = prose.gsub(/\\n/, '')
     
-    return prose.gsub(/{{ ([a-z0-9\_\-\.]*) }}/, template).html_safe
+    return prose.gsub(pattern, template).html_safe
   end
 
   def render_prose(part)
