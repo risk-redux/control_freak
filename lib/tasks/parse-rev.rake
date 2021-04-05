@@ -126,7 +126,7 @@ namespace :rev_content do
         p[:parent_id] = parent_id
         p[:number] = part["id"]
         p[:label] = part["name"]
-        p[:prepend] = part["properties"].nil? ? nil : part["properties"][0]["value"]
+        p[:prepend] = part["props"].nil? ? nil : part["props"][0]["value"]
         p[:prose] = part["prose"]
 
         p.save
