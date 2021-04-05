@@ -7,7 +7,6 @@ module ControlsHelper
     template = '<a href="\1">\1</a>'
     pattern = /\[([A-Z]{2}-[0-9]{1,2}(\([0-9]{1,2}\)){0,1})\]\(#([a-z]{2}-[0-9]{1,2}(\.[0-9]{1,2}){0,1})\)/
 
-    puts "\n\n\n\n\n\n\n\n\n", prose.gsub(pattern, template).html_safe, "\n\n\n\n\n\n\n\n\n"
     return prose.gsub(pattern, template).html_safe
   end
 
@@ -42,9 +41,8 @@ module ControlsHelper
 
   def statement(statement, level)
     s = ActionView::OutputBuffer.new
-
     statement.each do |part|
-      part.children.each do |child|
+      part.children.order("id ASC").each do |child|
         s += statement([child], level + 1)
       end
 
@@ -60,7 +58,6 @@ module ControlsHelper
     references = []
     reference_links = links.where(link_type: 'reference')
     reference_links.each do |r|
-      puts "\n\n\n\n\n\n",r.href.gsub('#',''),"\n\n\n\n\n\n\n\n\n\n"
       # Ugh! NIIIST! Moons of Nibia!
       references += Reference.where(uuid: r.href.gsub('#',''))
     end

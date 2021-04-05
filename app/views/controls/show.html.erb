@@ -24,7 +24,7 @@
 
   <% unless @control.parts.where(label: 'guidance', parent_id: nil).empty? %>
   <h2>Guidance</h2>
-  <% @control.parts.where(label: 'guidance', parent_id: nil).order(:id).each do |g| %>
+  <% @control.parts.where(label: 'guidance', parent_id: nil).each do |g| %>
   <% unless g.prose.nil? %>
   <% g.prose.split("\n").each do |paragraph| %>
   <p><%= render_hyperlinks(paragraph) %></p>
