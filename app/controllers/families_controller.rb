@@ -12,7 +12,7 @@ class FamiliesController < ApplicationController
 
     respond_to do |format|
       format.html {}
-      format.json { render json: @families.as_json(except: [:created_at, :updated_at]) }
+      format.json { render json: JSON.pretty_generate(@families.as_json(except: [:created_at, :updated_at])) }
     end
   end
 
@@ -23,10 +23,10 @@ class FamiliesController < ApplicationController
     respond_to do |format|
       format.html {}
       format.json {
-        render json: @family.as_json(except: [:created_at, :updated_at],
+        render json: JSON.pretty_generate(@family.as_json(except: [:created_at, :updated_at],
         include: [
           controls: { except: [:created_at, :updated_at] }
-        ])
+        ]))
       }
     end
   end

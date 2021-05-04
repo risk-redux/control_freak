@@ -9,7 +9,7 @@ class ControlsController < ApplicationController
 
     respond_to do |format|
       format.html {}
-      format.json { render json: @controls.as_json(except: [:created_at, :updated_at]) }
+      format.json { render json: JSON.pretty_generate(@controls.as_json(except: [:created_at, :updated_at])) }
     end
   end
 
@@ -19,12 +19,12 @@ class ControlsController < ApplicationController
     respond_to do |format|
       format.html {}
       format.json {
-        render json: @control.as_json(except: [:created_at, :updated_at], include: [
+        render json: JSON.pretty_generate(@control.as_json(except: [:created_at, :updated_at], include: [
           parameters: { except: [:created_at, :updated_at] },
           parts: { except: [:created_at, :updated_at] },
           links: { except: [:created_at, :updated_at] },
           children: { except: [:created_at, :updated_at] }
-        ])
+        ]))
       }
     end
   end
