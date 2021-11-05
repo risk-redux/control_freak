@@ -232,12 +232,12 @@ namespace :rev_content do
       puts "********************************************************************************"
       begin
         # Blech! NIIIST!
-        baseline['profile']['imports'][0]['include']['calls'].each do |control|
+        baseline['profile']['imports'][0]['include-controls'][0]['with-ids'].each do |control|
           begin
-            puts "#{control['control-id']} #{is_type}"
-            Control.find_by(number: control['control-id']).update(is_type => true)
+            puts "#{control} #{is_type}"
+            Control.find_by(number: control).update(is_type => true)
           rescue Exception => exception
-            puts "#{control['control-id']} not found!"
+            puts "#{control} not found!"
           end
         end
 
@@ -261,9 +261,9 @@ namespace :rev_content do
 
     # Driver
     json = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json').read
-    parse_families(json)
-    parse_references(json)
-    parse_controls(json)
+    # parse_families(json)
+    # parse_references(json)
+    # parse_controls(json)
 
     low_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_LOW-baseline_profile.json').read
     parse_baseline(low_baseline, :is_low)
