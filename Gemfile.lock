@@ -110,7 +110,7 @@ GEM
       racc (~> 1.4)
     pg (1.2.3)
     public_suffix (4.0.6)
-    puma (5.5.1)
+    puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -216,7 +216,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg
-  puma (~> 5.5)
+  puma (~> 5.6)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4)
   sass-rails (>= 6)
