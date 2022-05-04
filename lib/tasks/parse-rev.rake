@@ -261,9 +261,9 @@ namespace :rev_content do
 
     # Driver
     json = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json').read
-    # parse_families(json)
-    # parse_references(json)
-    # parse_controls(json)
+    parse_families(json)
+    parse_references(json)
+    parse_controls(json)
 
     low_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_LOW-baseline_profile.json').read
     parse_baseline(low_baseline, :is_low)

@@ -12,7 +12,7 @@ module ControlsHelper
 
   def render_parameters(prose)
     template = '<span class="parameter bg-warning">\1</span>'
-    pattern = /{{ ([a-z0-9\_\-\.]*) }}/
+    pattern = /{{ insert\: param\, ([a-z0-9\_\-\.\:\, ]*) }}/
     
     prose = prose.gsub(/\\n/, '')
     

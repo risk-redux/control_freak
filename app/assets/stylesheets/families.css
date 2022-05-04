@@ -1,0 +1,9 @@
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+abbr, abbr[title] {
+  text-decoration: none;
+  -webkit-text-decoration: none;
+}

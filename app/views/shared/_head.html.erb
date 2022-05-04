@@ -19,10 +19,8 @@
   <script src="https://kit.fontawesome.com/ee8eeacd5b.js" crossorigin="anonymous"></script>
 
   <!-- Rails Asset Pipeline -->
-  <%= stylesheet_link_tag "application", media: "all" %>
-  <% stylesheet_link_tag params[:controller] %>
-  <%= javascript_include_tag "application" %>
-  <% javascript_include_tag params[:controller] %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
 
   <%= csrf_meta_tags %>
 
