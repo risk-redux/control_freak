@@ -73,3 +73,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# Production database.
+group :production do
+  gem 'pg'
+end
