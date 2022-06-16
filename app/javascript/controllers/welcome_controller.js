@@ -1,4 +1,6 @@
-const searchSub = function() {
+import { Controller } from "@hotwired/stimulus"
+
+const searchSub = function () {
   $("#welcome").hide(1000);
   const url = "/welcome";
   const form = $("#big-search");
@@ -6,11 +8,11 @@ const searchSub = function() {
   return $.get(url, formData, null, "script");
 };
 
-const liveSearch = function() {
+const liveSearch = function () {
   let timer = 0;
-  return $("#big-search-field").bind("keyup", function() {
+  return $("#big-search-field").bind("keyup", function () {
     clearTimeout(timer);
-    return timer = setTimeout(searchSub, 200);
+    return timer = setTimeout(searchSub, 500);
   });
 };
 
