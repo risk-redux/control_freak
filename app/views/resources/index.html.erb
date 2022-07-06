@@ -1,0 +1,18 @@
+<%- view_title "Back Matter Resources" %>
+
+<% content_for :main do %>
+<div class="row">
+  <div class="col-12">
+    <h1 class="page-header">Resources</h1>
+    <ul>
+    <% @resources.each do |resource| %>
+      <li>
+        <a href="<%= resource.href %>"><strong><%= resource.number %></strong></a>,
+        <em><%= resource.citation %></em>
+        <em class="text-muted"><%= resource.uuid %></em>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>

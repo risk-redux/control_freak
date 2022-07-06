@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   get 'controls/:label', to: 'controls#show', as: :control
 
   get 'statements', to: 'statements#index', as: :statements
+  
+  get 'resources', to: 'resources#index', as: :resources
 end

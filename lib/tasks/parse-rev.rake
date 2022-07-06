@@ -289,7 +289,7 @@ namespace :rev_content do
     json = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json').read
     parse_catalog(json)
     parse_families(json)
-    # parse_references(json)
+    parse_references(json)
     # parse_controls(json)
 
     # low_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_LOW-baseline_profile.json').read

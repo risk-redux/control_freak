@@ -1,16 +1,23 @@
 <%- view_title "About" %>
 
 <% content_for :main do %>
-<div class="row">
-  <div class="col-12">
-    <h1 class="page-header">Welcome to `<%= "#{Rails.application.config.app_name}" %>`</h1>
-    <p class="lead">`control_freak` is a part of the <a href="https://risk-redux.io">Risk-Redux</a> project, which seeks to turn NIST frameworks into practical web applications.</p>
-    <p>The `rev-5` branch represents content from <a href="https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final">NIST SP 800-53, Rev 5</a>.</p>
+  <div class="row">
+    <div class="col-12">
+      <h1 class="page-header">Welcome to `<%= "#{Rails.application.config.app_name}" %>`</h1>
+      <p class="lead">`control_freak` is a part of the <a href="https://risk-redux.io">Risk-Redux</a> project, which
+        seeks to turn NIST frameworks into practical web applications.</p>
+      <p>The `rev-5` branch represents content from <a
+          href="https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final">NIST SP 800-53, Rev 5</a>.</p>
 
-    <h2>Metadata</h2
-    <p>We're currently rendering <a href="https://pages.nist.gov/OSCAL/reference/latest/catalog/json-reference/#/catalog/groups/params">OSCAL (Version <%= @catalog.oscal_version %>)</a> content from <a href="https://github.com/usnistgov/oscal-content"><em><%= @catalog.title %> (UUID: <%= @catalog.uuid %>)</em></a>.</p>
-      
-    <h2>Contributing</h2>
-    <p>To learn more about our work, check us out on <a href="http://github.com/risk-redux">GitHub</a>!</p>
-</div>
+      <h2>Metadata</h2 <p>We're currently rendering <a
+        href="https://pages.nist.gov/OSCAL/reference/latest/catalog/json-reference/#/catalog/groups/params">OSCAL
+        (Version <%= @catalog.oscal_version %>)</a> content from <a
+        href="https://github.com/usnistgov/oscal-content"><em>
+          <%= @catalog.title %> (UUID: <%= @catalog.uuid %>)
+        </em></a>.</p>
+
+      <h2>Contributing</h2>
+      <p>To learn more about our work, check us out on <a href="http://github.com/risk-redux">GitHub</a>!</p>
+    </div>
+  </div>
 <% end %>
