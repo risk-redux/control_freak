@@ -30,14 +30,18 @@ namespace :rev_content do
         Family.destroy_all
         
         json['catalog']['groups'].each do |group|
-          family = Family.create
-          
-          family[:acronym] = group['id']
-          family[:title] = group['title']
+          if group['class'] == 'family'
+            family = Family.create
+            
+            family[:acronym] = group['id']
+            family[:title] = group['title']
 
-          family.save
-          
-          puts "Created family: #{family[:acronym]}"
+            family.save
+            
+            puts "Created family: #{family[:acronym]}"
+          else
+            puts "Found non-family `group`: #{group['id']}"
+          end
         end
 
         puts "Created #{Family.count} families..."
@@ -284,7 +288,7 @@ namespace :rev_content do
     # Driver
     json = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json').read
     parse_catalog(json)
-    # parse_families(json)
+    parse_families(json)
     # parse_references(json)
     # parse_controls(json)
 
