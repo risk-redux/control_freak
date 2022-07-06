@@ -1,0 +1,2 @@
+class Catalog < ApplicationRecord
+end
