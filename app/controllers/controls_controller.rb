@@ -14,7 +14,9 @@ class ControlsController < ApplicationController
   end
 
   def show
-    @control = Control.where(label: params[:label]).first
+    search = params[:label]
+
+    @control = Control.where(number: search.downcase).or(Control.where(sort_number: search.downcase)).or(Control.where(label: search)).first
 
     respond_to do |format|
       format.html {}
