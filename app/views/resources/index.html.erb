@@ -7,8 +7,9 @@
     <ul>
     <% @resources.each do |resource| %>
       <li>
-        <a href="<%= resource.href %>"><strong><%= resource.number %></strong></a>,
+        <a href="<%= resource.href %>"><strong><%= resource.number %></strong> <i class="fas fa-external-link-alt"></i></a>
         <em><%= resource.citation %></em>
+        <br/>
         <em class="text-muted"><%= resource.uuid %></em>
       </li>
     <% end %>

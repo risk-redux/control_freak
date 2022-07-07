@@ -14,10 +14,10 @@
     <%= statement(@control.parts.where(label: 'statement', parent_id: nil), 0) %>
   </div>
 
-  <!-- <% unless @control.parameters.empty? %>
+  <% unless @control.parameters.empty? %>
   <%= parameter_table(@control.parameters) %>
   <% end %>
-  <% end %> -->
+  <% end %>
 
   <h2>Baselines</h2>
   <%= baseline_pills(@control) %>

@@ -1,6 +1,6 @@
 module ControlsHelper
   def parameter_table(parameters)
-    render("controls/shared/parameter_table", parameters: parameters)
+    render("controls/shared/parameter_table", parameters: parameters.order("id ASC"))
   end
 
   def render_hyperlinks(prose)
