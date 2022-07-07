@@ -14,10 +14,6 @@
         <%= p.label %>
         <% end %>
 
-        <% unless p.depends_on.nil? %>
-        (depends on: <span class="bg-warning"><strong><em><%= p.depends_on %></em></strong></span>)
-        <% end %>
-
         <% unless p.selection.nil? %>
         <p>Selection (<em><%= (p.how_many) %></em>):</p>
         <% end %>
