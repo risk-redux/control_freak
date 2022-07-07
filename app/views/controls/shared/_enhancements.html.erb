@@ -1,0 +1,20 @@
+<% unless enhancements.empty? %>
+<ul>
+<% enhancements.each do |child| %>
+  <% unless child.status == 'withdrawn' %>
+  <li>
+    <%= link_to control_path(child.label) do %>
+    <%= child.label %>
+    <em><%= child.title %></em>
+    <% end %>
+    <%= baseline_badges(child) %>
+  </li>
+  <% else %>
+  <li class="text-muted">
+    <%= child.label %>
+    <em><%= child.title %></em>
+  </li>
+  <% end %>
+<% end %>
+</ul>
+<% end %>

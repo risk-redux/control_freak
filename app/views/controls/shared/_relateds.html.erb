@@ -1,11 +1,20 @@
 <% unless relateds.empty? %>
-<ul class="list-inline">
-  <% relateds.each do |r| %>
-  <li class="list-inline-item">
-    <%= link_to(control_path(r.label), title: r.title) do %>
-    <span class="badge badge-pill badge-primary badge-fixed"><%= r.label.ljust(5) %></span>
+<ul>
+<% relateds.each do |r| %>
+  <% unless r.status == 'withdrawn' %>
+  <li>
+    <%= link_to control_path(r.label) do %>
+    <%= r.label %>
+    <em><%= r.title %></em>
     <% end %>
+    <%= baseline_badges(r) %>
+  </li>
+  <% else %>
+  <li class="text-muted">
+    <%= r.label %>
+    <em><%= r.title %></em>
   </li>
   <% end %>
+<% end %>
 </ul>
 <% end %>

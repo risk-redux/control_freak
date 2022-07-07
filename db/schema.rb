@@ -62,7 +62,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_143621) do
     t.text "selection", limit: 65535
     t.text "how_many", limit: 65535
     t.text "choices", limit: 65535
-    t.text "depends_on", limit: 65535
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["control_id"], name: "index_parameters_on_control_id"

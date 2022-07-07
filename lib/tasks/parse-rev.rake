@@ -81,7 +81,7 @@ namespace :rev_content do
 
           r.save
 
-          puts "\t\t\tCreated reference: #{r[:number]}"
+          puts "Created reference: #{r[:number]}, #{r[:uuid]}"
         end
       rescue Exception => exception
         puts exception.message
@@ -101,10 +101,12 @@ namespace :rev_content do
           p[:number] = parameter['id']
           p[:label] = parameter['label']
           p[:selection] = parameter['select']
-          p[:depends_on] = parameter['depends-on']
           unless parameter['select'].nil?
             p[:how_many] = parameter['select']['how-many'] || 'one'
             p[:choices] = parameter['select']['choice']
+          end
+          unless parameter['usage'].nil?
+            p[:usage] = parameter['usage']
           end
 
           p.save
@@ -170,7 +172,7 @@ namespace :rev_content do
       puts "\t\t\t********************************************************************************"
       puts "\n\n\n"
     end
-
+    
     def parse_control(family_id, parent_id, control)
       puts "\n\n\nParsing Control"
       puts "********************************************************************************"
@@ -290,19 +292,19 @@ namespace :rev_content do
     parse_catalog(json)
     parse_families(json)
     parse_references(json)
-    # parse_controls(json)
+    parse_controls(json)
 
-    # low_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_LOW-baseline_profile.json').read
-    # parse_baseline(low_baseline, :is_low)
+    low_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_LOW-baseline_profile.json').read
+    parse_baseline(low_baseline, :is_low)
 
-    # moderate_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_MODERATE-baseline_profile.json').read
-    # parse_baseline(moderate_baseline, :is_moderate)
+    moderate_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_MODERATE-baseline_profile.json').read
+    parse_baseline(moderate_baseline, :is_moderate)
 
-    # high_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_HIGH-baseline_profile.json').read
-    # parse_baseline(high_baseline, :is_high)
+    high_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_HIGH-baseline_profile.json').read
+    parse_baseline(high_baseline, :is_high)
 
-    # privacy_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_PRIVACY-baseline_profile.json').read
-    # parse_baseline(privacy_baseline, :is_privacy)
+    privacy_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_PRIVACY-baseline_profile.json').read
+    parse_baseline(privacy_baseline, :is_privacy)
 
     # control_seeds()
   end

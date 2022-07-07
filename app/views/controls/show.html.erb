@@ -14,10 +14,10 @@
     <%= statement(@control.parts.where(label: 'statement', parent_id: nil), 0) %>
   </div>
 
-  <% unless @control.parameters.empty? %>
+  <!-- <% unless @control.parameters.empty? %>
   <%= parameter_table(@control.parameters) %>
   <% end %>
-  <% end %>
+  <% end %> -->
 
   <h2>Baselines</h2>
   <%= baseline_pills(@control) %>
@@ -38,66 +38,15 @@
   <%= references(@control.links.where(link_type: 'reference')) %>
   <% end %>
 
+  <% unless @control.children.empty? %>
+  <h2>Control Enhancements <span class="badge badge-info"><%= @control.children.count %></span></h2>
+  <%= enhancements(@control.children.order("sort_number ASC")) %>
+  <% end %>
+
   <% unless @control.links.where(link_type: 'related').empty? %>
   <h2>Related controls <span class="badge badge-info"><%= @control.links.where(link_type: 'related').count %></span></h2>
   <%= relateds(@control.links.where(link_type: 'related')) %>
   <% end %>
-
-  <hr/>
-
-  <% @control.children.order("sort_number ASC").each do |child| %>
-  <% unless child.status == 'withdrawn' %>
-  <h1>
-    <%= child.label %>
-    <small>
-      <%= child.title %><br/>
-      <%= baseline_badges(child) %>
-    </small>
-  </h1>
-
-  <% unless child.parts.where(label: 'statement').empty? %>
-  <div class="control-body bg-light">
-    <%= statement(child.parts.where(label: 'statement'), 0) %>
-  </div>
-  <% end %>
   
-  <% unless child.parameters.empty? %>
-  <%= parameter_table(child.parameters) %>
-  <% end %>
-
-  <% unless child.parts.where(label: 'guidance').empty? %>
-  <h2>Guidance</h2>
-  <% child.parts.where(label: 'guidance').each do |g| %>
-  <% unless g.prose.nil? %>
-  <p><%= render_hyperlinks(g.prose) %></p>
-  <% end %>
-  <% end %>
-  <% end %>
-
-  <% unless child.links.where(link_type: 'reference').empty? %>
-  <h2>References <span class="badge badge-info"><%= child.links.where(link_type: 'reference').count %></span></h2>
-  <%= references(child.links.where(link_type: 'reference')) %>
-  <% end %>
-
-  <% unless child.links.where(link_type: 'related').empty? %>
-  <h2>Related controls <span class="badge badge-info"><%= child.links.where(link_type: 'related').count %></span></h2>
-  <%= relateds(child.links.where(link_type: 'related')) %>
-  <% end %>
-
-  <% else %>
-  <h1 class="text-muted">
-    <%= child.label %>
-    <small>
-      <%= child.title %>
-    </small>
-  </h1>
-
-  <% unless child.links.empty? %>
-  <div class="control-body bg-light">
-    <%= withdrawn_content(child.links) %>
-  </div>
-  <% end %>
-  <% end %>
   <hr/>
-  <% end %>
 <% end %>

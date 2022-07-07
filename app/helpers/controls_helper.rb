@@ -76,6 +76,10 @@ module ControlsHelper
     render("controls/shared/relateds", relateds: relateds)
   end
 
+  def enhancements(enhancements)
+    render("controls/shared/enhancements", enhancements: enhancements)
+  end
+
   def baseline_pills(control)
     render("controls/shared/baseline_pills", control: control)
   end
