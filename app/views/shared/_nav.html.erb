@@ -12,18 +12,20 @@
       
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto text-right">
-          <li class="nav-item <%= is_active('about') %>">
-            <%= link_to("About", about_path(), { class: "nav-link" }) %>
-          </li>
-          <li class="nav-item <%= is_active('resources') %>">
-            <%= link_to("Back Matter Resources", resources_path(), { class: "nav-link" }) %>
-          </li>
-          <div class="dropdown-divider"></div>
           <li class="nav-item <%= is_active('families') %>">
             <%= link_to("Families", families_path(), { class: "nav-link" }) %>
           </li>
           <li class="nav-item <%= is_active('controls') %>">
             <%= link_to("Controls", controls_path(), { class: "nav-link" }) %>
+          </li>
+          <li class="nav-item <%= is_active('resources') %>">
+            <%= link_to("Back Matter Resources", resources_path(), { class: "nav-link" }) %>
+          </li>
+          <div class="dropdown-divider"></div>
+          <li class="nav-item <%= is_active('about') %>">
+            <%= link_to(about_path(), { class: "nav-link" }) do %>
+            <i class="fas fa-info-circle"></i> Metadata
+            <% end %>
           </li>
         </ul>
       </div>
