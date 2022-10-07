@@ -19,7 +19,11 @@
   
     <!-- Font Awesome CDN -->
     <script src="https://kit.fontawesome.com/ee8eeacd5b.js" crossorigin="anonymous"></script>
-  
+
+    <!-- elasticlunr -->
+    <script src="assets/javascript/elasticlunr.js" crossorigin="anonymous"></script>
+
+    <!-- My Stuff -->
     <link rel="stylesheet" type="text/css" href="assets/css/sticky-footer-navbar.css">
     <link rel="stylesheet" type="text/css" href="assets/css/typography.css">
     <link rel="stylesheet" type="text/css" href="assets/css/big-search.css">
@@ -74,6 +78,9 @@
             </form>
           </div>
           <div id="big-search-results" class="col-12">
+            <ul>
+              
+            </ul>
           </div>
         </div>
       </div>
@@ -109,16 +116,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
     
     <script>
-      fetch("assets/data/nist-sp-800-53-rev-5-catalog.json")
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(`Successfully fetched catalog: ${data.catalog.metadata.title} (${data.catalog.uuid})`);
-          // console.log(data);
-          load_big_search(data);
-        })
-        .catch((error) => {
-          console.error('There has been a problem with your fetch operation:', error);
-        });
+      load_big_search();
     </script>
     <!-- ******************************************************************* -->
   </body>
