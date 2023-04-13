@@ -20,14 +20,11 @@
     <!-- Font Awesome CDN -->
     <script src="https://kit.fontawesome.com/ee8eeacd5b.js" crossorigin="anonymous"></script>
 
-    <!-- elasticlunr -->
-    <script src="assets/javascript/elasticlunr.js" crossorigin="anonymous"></script>
-
     <!-- My Stuff -->
-    <link rel="stylesheet" type="text/css" href="assets/css/sticky-footer-navbar.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/typography.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/big-search.css">
-    <script src="assets/javascript/big-search.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../assets/css/sticky-footer-navbar.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/typography.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/big-search.css">
+    <script src="../assets/javascript/families.js" crossorigin="anonymous"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
@@ -68,20 +65,17 @@
       <div class="container mt-5">
         <div class="row">
           <div class="col-12">
-            <form id="big-search">
-            <div class="big-search">
-              <span class="fa fa-search"></span>
-              <input type="text" id="big-search-field" autocomplete="off" maxlength=35 placeholder="Search for controls (e.g., 'Authenticator Management')..." >
-            </div>
-            <br>
-            <input type="submit">
-            </form>
+            <h1 class="page-header">Families</h1>
+            <blockquote class="blockquote">
+              <p>"Security controls described in this publication have a well-defined organization and structure. For ease of use in the security control selection and specification process, controls are organized into eighteen families. Each family contains security controls related to the general security topic of the family. A two-character identifier uniquely identifies security control families, for example, PS (Personnel Security). Security controls may involve aspects of policy, oversight, supervision, manual processes, actions by individuals, or automated mechanisms implemented by information systems/devices."</p>
+              <footer class="blockquote-footer"><cite title="Source Title">NIST SP 800-53, Rev 5</cite></footer>
+            </blockquote>
+            <p>Each of the 20 families comes with a two letter code, which comprises the first part of a control number (i.e., the principal identifiers for controls). Here's a quick guide<span class="hidden-xs hidden-sm">, and some "at-a-glance" stats</span>:</p>
           </div>
-          <div id="big-search-results" class="col-12">
-            <ul class="list-unstyled">
-              
-            </ul>
-          </div>
+        </div>
+        <hr>
+        <div id="periodic-table-of-controls" class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-4 row-cols-lg-5">
+
         </div>
       </div>
     </main>
@@ -114,9 +108,9 @@
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
-    
+
     <script>
-      load_big_search();
+      load_families();
     </script>
     <!-- ******************************************************************* -->
   </body>

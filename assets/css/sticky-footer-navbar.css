@@ -3,13 +3,9 @@
 /* Not required for template or sticky footer method. */
 
 nav {
-  margin-top: 3.00em;
+  margin-top: 4.00em;
 }
 
 main {
-  margin-top: 5.00em;
-}
-
-main > .container {
-  padding: 60px 15px 0;
+  margin-top: 2.00em;
 }

@@ -7,3 +7,10 @@
 .fancy {
   font-family: 'Righteous', cursive;
 }
+
+#periodic-table-of-controls a, abbr, abbr[title] {
+  text-decoration: none;
+  text-decoration-line: none;
+  -webkit-text-decoration: none;
+  cursor: pointer;
+}
