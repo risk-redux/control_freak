@@ -41,13 +41,14 @@ module ControlsHelper
 
   def statement(statement, level)
     s = ActionView::OutputBuffer.new
+
     statement.each do |part|
       part.children.order("id ASC").each do |child|
-        s += statement([child], level + 1)
+        s << statement([child], level + 1)
       end
 
       unless part.prose.nil?
-        s = render("controls/shared/statement", prose: render_prose(part), level: level) + s
+        s = render("controls/shared/statement", prose: render_prose(part), level: level) << s
       end
 
       return s
