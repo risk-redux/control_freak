@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_06_143621) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_25_173834) do
   create_table "catalogs", force: :cascade do |t|
     t.string "uuid"
     t.text "title"
@@ -34,6 +34,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_143621) do
     t.boolean "is_privacy"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "implementation_level"
+    t.boolean "contributes_to_assurance"
     t.index ["family_id"], name: "index_controls_on_family_id"
     t.index ["parent_id"], name: "index_controls_on_parent_id"
   end

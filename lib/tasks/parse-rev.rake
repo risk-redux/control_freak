@@ -197,6 +197,10 @@ namespace :rev_content do
               c[:status] = property['value']
             when 'sort-id'
               c[:sort_number] = property['value']
+            when 'implementation-level'
+              c[:implementation_level] = property['value']
+            when 'contributes-to-assurance'
+              c[:contributes_to_assurance] = ( property['value'] == 'true' )
             else
               raise "Unknown property: #{property['name']}: #{property['value']}"
             end
