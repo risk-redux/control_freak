@@ -292,22 +292,32 @@ namespace :rev_content do
     end
 
     # Driver
-    json = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json').read
+    catalog_location = URI('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json')
+    catalog = Net::HTTP.get_response(catalog_location)
+    json = JSON.parse catalog.body
     parse_catalog(json)
     parse_families(json)
     parse_references(json)
     parse_controls(json)
 
-    low_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_LOW-baseline_profile.json').read
+    low_location = URI.parse('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_LOW-baseline_profile.json')
+    low = Net::HTTP.get_response(low_location)
+    low_baseline = JSON.parse low.body
     parse_baseline(low_baseline, :is_low)
 
-    moderate_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_MODERATE-baseline_profile.json').read
+    moderate_location = URI.parse('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_MODERATE-baseline_profile.json')
+    moderate = Net::HTTP.get_response(moderate_location)
+    moderate_baseline = JSON.parse moderate.body
     parse_baseline(moderate_baseline, :is_moderate)
 
-    high_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_HIGH-baseline_profile.json').read
+    high_location = URI.parse('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_HIGH-baseline_profile.json')
+    high = Net::HTTP.get_response(high_location)
+    high_baseline = JSON.parse high.body
     parse_baseline(high_baseline, :is_high)
 
-    privacy_baseline = JSON.parse URI.open('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_PRIVACY-baseline_profile.json').read
+    privacy_location = URI.parse('https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_PRIVACY-baseline_profile.json')
+    privacy = Net::HTTP.get_response(privacy_location)
+    privacy_baseline = JSON.parse privacy.body
     parse_baseline(privacy_baseline, :is_privacy)
 
     # control_seeds()
