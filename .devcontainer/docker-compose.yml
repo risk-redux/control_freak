@@ -1,0 +1,33 @@
+services:
+  db:
+    image: postgres:latest
+    volumes:
+      - controlfreak-db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=control_freak_development
+      - POSTGRES_USER=control_freak
+      - POSTGRES_PASSWORD=password
+  rails-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/control_freak:cached
+      - controlfreak-bundle:/control_freak/vendor/bundle
+    command: sleep infinity # Overrides default command so things don't shut down after the process ends.
+    network_mode: service:db # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
+    depends_on:
+      - db
+    environment:
+      - RAILS_ENV=development
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=control_freak_development
+      - BUNDLE_PATH=/control_freak/vendor/bundle
+      - POSTGRES_USER=control_freak
+      - POSTGRES_PASSWORD=password
+
+volumes:
+  controlfreak-db:
+    external: true
+  controlfreak-bundle:
+    external: true

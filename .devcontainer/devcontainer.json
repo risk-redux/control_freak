@@ -1,0 +1,7 @@
+{
+  "name": "control_freak",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "rails-app",
+  "workspaceFolder": "/control_freak",
+  "postCreateCommand": "/control_freak/bin/setup"
+}
