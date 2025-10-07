@@ -1,4 +1,4 @@
-FROM ruby:3.4.5-alpine3.22
+FROM ruby:3.4.6-alpine3.22
 
 RUN apk --update add \
   build-base \
