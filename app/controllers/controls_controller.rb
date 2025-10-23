@@ -1,11 +1,8 @@
 ActiveRecord::Base.include_root_in_json = true
 
 class ControlsController < ApplicationController
-  # This is one big ugly page, and I ought to think of an elegant cache expiration solution for it... Maybe something with sweepers that monitor changes to `Control`?
-  caches_page :index
-
   def index
-    @controls = Control.order(:sort_number)
+    @controls = Control.where(parent_id: nil).order(:sort_number)
 
     respond_to do |format|
       format.html {}

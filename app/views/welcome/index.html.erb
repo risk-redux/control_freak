@@ -3,16 +3,22 @@
 <% content_for :main do %>
 <div class="row">
   <div class="col-12">
-    <%= form_tag(welcome_path, :method => 'get', :id => "big-search") do %>
+    <%= form_tag(welcome_path, :method => 'get', :id => "big-search", "data-controller" => "welcome") do %>
     <div class="big-search">
       <span class="fa fa-search"></span>
-      <%= text_field_tag(:search, params[:search], :id => "big-search-field", :autocomplete => "off", :maxlength => 35, :placeholder => "Search for controls (e.g., 'Authenticator Management')...") %>
+      <%= text_field_tag(:search, params[:search], :id => "big-search-field", :autocomplete => "off", :maxlength => 35, :autofocus => "true", :placeholder => "Search for controls (e.g., '#{ @placeholder }')...") %>
     </div>
     <br /><%= submit_tag("Search", :name => nil) %>
     <% end %>
   </div>
+
   <div id="big-search-results" class="col-12">
-    <%= render "welcome/shared/big_search_results" %>
   </div>
+
+  <turbo-stream action="update" target="big-search-results">
+    <template>
+    <%= render "welcome/shared/big_search_results" %>
+    </template>
+  </turbo-stream>
 </div>
 <% end %>

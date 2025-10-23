@@ -1,11 +1,13 @@
 <% if @hits['title_hits'].length == 0 && @hits['prose_hits'].length == 0 && (@search.to_s != '') %>
+
 <h2 class='text-center'>No matches found.</h2>
+
 <% else %>
 <ul class='list-unstyled'>
   <% @hits['title_hits'].each do |hit| %>
     <% unless hit.sort_number == 'Withdrawn' %>
     <%= link_to(control_path(hit.label)) do %>
-      <li><h2><%= hit.label %> <small><%= hit.title %></small></h2></li>
+      <li><h2><span class="fixed-width"><%= hit.label %></span> <small><%= hit.title %></small></h2></li>
     <% end %>
     <% end %>
   <% end %>
@@ -14,7 +16,7 @@
   <% @hits['prose_hits'].each do |hit| %>
     <li>
       <%= link_to(control_path(hit.ctrl.label)) do %>
-      <h2><small><%= "#{hit.ctrl.label} #{hit.label.upcase}" %></small></h2>
+      <h2><small><span class="fixed-width"><%= hit.ctrl.label %></span> <%= hit.label.upcase %></small></h2>
       <% end %>
       <blockquote>
         <p><em><%= hit.prose %></em></p>

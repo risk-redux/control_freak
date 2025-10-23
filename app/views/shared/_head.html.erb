@@ -2,14 +2,24 @@
   <meta charset="utf-8">
   <meta name="author" content="Karim Said">
   <meta name="description" content="control_freak">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
   <title><%= "#{Rails.application.config.app_name}" %><%= content_for?(:title) ?  " | #{content_for(:title)}" : "" %></title>
   
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <%= yield :head %>
 
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+  <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+  <link rel="icon" href="/icon.png" type="image/png">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icon.png">
+
+  <%# Includes all stylesheet files in app/assets/stylesheets %>
+  <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
 
   <!-- Google Fonts -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Righteous&display=swap">
@@ -17,12 +27,4 @@
 
   <!-- Font Awesome CDN -->
   <script src="https://kit.fontawesome.com/ee8eeacd5b.js" crossorigin="anonymous"></script>
-
-  <!-- Rails Asset Pipeline -->
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_importmap_tags %>
-
-  <%= csrf_meta_tags %>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>

@@ -1,0 +1,79 @@
+h1.anchor, h2.anchor, h3.anchor, h4.anchor {
+  padding-top: 80px;
+  margin-top: -80px;
+}
+
+p{
+  text-align: justify;
+}
+
+.navbar-brand{
+  font-family: 'Righteous', cursive;
+  font-size: 2.50em;
+  font-weight: bold;
+}
+
+.fancy{
+  font-family: 'Righteous', cursive;
+}
+
+.giant{
+
+  font-family: 'Fira Mono', monospace;
+  font-size: 3.00em;
+  font-weight: 700;
+}
+
+.badge {
+  font-family: 'Fira Mono', monospace;
+}
+
+.popover div.small {
+  word-break: break-all;
+}
+
+.popover > .arrow {
+  visibility: hidden;
+}
+
+.fixed-width {
+  font-family: 'Fira Mono', monospace;
+}
+
+th, td{
+  font-family: 'Fira Mono', monospace;
+}
+
+tr[data-link]:hover {
+  cursor: pointer;
+}
+
+tr.incorporated-into {
+  font-family: 'Fira Mono', monospace;
+  // font-style: italic;
+  font-weight: 400;
+  color: #bbbbbb;
+}
+
+tr.moved-to {
+  font-family: 'Fira Mono', monospace;
+  // font-style: italic;
+  font-weight: 400;
+  color: #bbbbbb;
+}
+
+
+tr.enhancement {
+  font-family: 'Fira Mono', monospace;
+  // font-style: italic;
+  font-weight: 500;
+}
+
+tr.control {
+  font-family: 'Fira Mono', monospace;
+  font-weight: 700;
+}
+
+.badge-fixed {
+  white-space: pre;
+}
